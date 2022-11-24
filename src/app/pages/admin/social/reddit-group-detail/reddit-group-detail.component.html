@@ -1,0 +1,46 @@
+<div class="content">
+    <div *nzModalTitle>
+        <span>{{"action.detail" | translate}}</span>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <form [formGroup]="form">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-6 mb-2">
+                                <label>{{ "reddit.group.name"}}
+                                    <span class="text-danger">*</span></label>
+                                <input formControlName="name" nz-input
+                                    placeholder="{{'reddit.group.enterName'}}" />
+                            </div>
+
+                            <div class="col-6 mb-2">
+                                <label>{{ "reddit.group.nameUrl" }}
+                                    <span class="text-danger">*</span></label>
+                                <input formControlName="nameUrl" nz-input 
+                                    placeholder="{{'reddit.group.enterNameUrl' | translate}}" />
+                            </div>
+
+                            <div class="col-12 mb-2">
+                                <label>{{ "reddit.group.desciption" | translate }}
+                                    <span class="text-danger">*</span></label>
+                                <textarea formControlName="description" nz-input
+                                    placeholder="{{'reddit.group.enterDesciption' | translate}}">
+                                </textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 text-center" *nzModalFooter>
+        <button nz-button nzType="default" class="e-2" (click)="onCancel()">
+            {{ "action.cancel" | translate }}
+        </button>
+    </div>
+</div>

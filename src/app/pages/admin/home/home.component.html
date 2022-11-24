@@ -1,0 +1,181 @@
+<div id="main">
+  <div id="header">
+    <div class="header-logo" (click)="toHome()">
+      <img
+        src="assets/images/cmk.png"
+        alt="AMC_LOGO"
+        id="evotek-logo"
+      />
+    </div>
+    <div class="header-nav">
+      <ul id="nav">
+        <li
+          [ngClass]="getClassIndex(tabIndex.introduce)"
+          (click)="changeTab(tabIndex.introduce)"
+        >
+          <a>{{ "home.introduce" | translate }}</a>
+        </li>
+      </ul>
+      <button
+        class="btn-language"
+        nz-button
+        nz-popover
+        nzPopoverTrigger="click"
+        [(nzPopoverVisible)]="visible"
+        [nzPopoverContent]="languageTemplate"
+      >
+        <img
+          *ngIf="currentLanguage === LANGUAGES_CONST.VI.code"
+          src="assets/images/icon/vietnam.png"
+          alt="vi"
+        />
+        <img
+          *ngIf="currentLanguage === LANGUAGES_CONST.EN.code"
+          src="assets/images/icon/english.png"
+          alt="en"
+        />
+      </button>
+      <ng-template #languageTemplate>
+        <div class="language-form">
+          <p (click)="onChangeLanguage(LANGUAGES_CONST.VI.code)">
+            <img src="assets/images/icon/vietnam.png" alt="vi" />
+            <span class="ms-2">{{ "common.vi" | translate }}</span>
+          </p>
+          <p (click)="onChangeLanguage(LANGUAGES_CONST.EN.code)">
+            <img src="assets/images/icon/english.png" alt="en" />
+            <span class="ms-2">{{ "common.en" | translate }}</span>
+          </p>
+        </div>
+      </ng-template>
+      <nz-divider nzType="vertical"></nz-divider>
+      <button
+        class="btn-login"
+        nz-button
+        nzType="primary"
+        (click)="navigate('/authentication/login')"
+      >
+        {{ "home.log-in" | translate }}
+      </button>
+      <div class="clear"></div>
+    </div>
+  </div>
+
+  <ng-container *ngIf="index === tabIndex.introduce">
+    <div id="start">
+      <div class="row">
+        <div class="col start-content">
+          <span class="text-primary d-block start-title"
+            ><strong>MARKETING</strong></span
+          >
+          <p class="mt-1 mt-md-3 start-content-inner">
+            {{ "home.start-title" | translate }}
+          </p>
+          <p class="start-content-inner">
+            {{ "home.start-content" | translate }}
+          </p>
+          <button
+            nz-button
+            nzType="primary"
+            class="mt-4 btn-login"
+            (click)="navigate('/authentication/login')"
+          >
+            {{ "home.start" | translate }}
+          </button>
+        </div>
+        <div
+          class="col"
+          *ngIf="currentLanguage === LANGUAGES_CONST.VI.code; else laptopEn"
+        >
+          <img
+            class="start-image"
+            src="assets/images/laptop-me.png"
+            alt="start"
+          />
+        </div>
+        <ng-template #laptopEn>
+          <div class="col">
+            <img
+              class="start-image"
+              src="assets/images/laptop-me-en.png"
+              alt="start"
+            />
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </ng-container>
+
+  <!-- <hr style="background-color: #0054a5; height: 1px" /> -->
+  <!-- footer -->
+  <!-- <div class="footer">
+    <div class="footer-top d-flex justify-content-center">
+      <div class="container">
+        <div class="row mt-4">
+          <div class="col-lg-7 col-sm-12 col-xs-12">
+            <div class="row row-1 mt-3">
+              <div class="logo-margin col-lg-12 col-xl-3 text-left mt-1">
+                <img
+                  src="assets/images/evotek-logo.svg"
+                  alt="AMC_LOGO"
+                  id="evotek-logo"
+                />
+              </div>
+              <div class="col-lg-12 col-xl-9 ml-3">
+                <div class="content">
+                  <p>
+                    <span class="company-name text-left">
+                      {{ "home.company-name" | translate }}
+                    </span>
+                    <br />
+                    <span class="commpany-address text-left">
+                      {{ "home.company-address" | translate }}
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="info-contact col-lg-5 col-sm-12 col-xs-12">
+            <div class="info-container d-flex">
+              <div class="contact-margin contact-margin-right">
+                <div class="d-flex">
+                  <span class="icon-contact">
+                    <img src="assets/images/contact-phone.png" alt="" />
+                  </span>
+                  <p class="m-0 d-flex flex-column">
+                    <span class="title-contact">HOTLINE</span>
+                  </p>
+                </div>
+                <div class="text-contact-contanier">
+                  <a class="text-contact">000 0000 0000</a>
+                </div>
+              </div>
+              <div class="contact-margin">
+                <div class="d-flex">
+                  <span class="icon-contact">
+                    <img src="assets/images/contact-email.png" alt="" />
+                  </span>
+                  <p class="m-0 d-flex flex-column">
+                    <span class="title-contact">EMAIL</span>
+                  </p>
+                </div>
+                <div class="text-contact-contanier">
+                  <a class="text-contact">hr@evotek.vn</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-4" id="copy-right">
+      <hr style="background-color: #0054a5; height: 1px" />
+      <p
+        style="color: #0054a5; font-size: 12px"
+        class="copy-right text-center mt-2"
+      >
+        Copyright {{ this.currentYear }} EVOTEK . All rights reserved.
+      </p>
+    </div>
+  </div> -->
+</div>
