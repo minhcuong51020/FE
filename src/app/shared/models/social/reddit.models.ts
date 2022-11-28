@@ -4,30 +4,54 @@ export interface IReddit {
     password?: string,
     clientId?: string,
     clientSecret?: string,
-    displayName?: string,
+    nameDisplay?: string,
     createdAt?: Date,
     modifiedAt?: Date
 }
 
 export class Reddit implements IReddit {
     constructor(
-        public id: string,
-        public username: string,
-        public password: string,
-        public clientId: string,
-        public clientSecret: string,
-        public displayName: string,
-        public createdAt: Date,
-        public modifiedAt: Date
+        public id?: string,
+        public username?: string,
+        public password?: string,
+        public clientId?: string,
+        public clientSecret?: string,
+        public nameDisplay?: string,
+        public createdAt?: Date,
+        public modifiedAt?: Date
     ) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.clientId = clientId;
         this.clientSecret = clientSecret;
-        this.displayName = displayName;
+        this.nameDisplay = nameDisplay;
         this.createdAt = createdAt;
         this.modifiedAt = modifiedAt;
+    }
+}
+
+export interface IRedditRequest {
+    keyword?: string;
+    pageIndex?: number;
+    pageSize?: number;
+    sortBy?: string;
+    hasPageable?: boolean;
+}
+  
+export class RedditRequest implements IRedditRequest {
+    constructor(
+        public keyword?: string,
+        public pageIndex?: number,
+        public pageSize?: number,
+        public sortBy?: string,
+        public hasPageable?: boolean
+    ) {
+        this.keyword = keyword;
+        this.pageIndex = pageIndex;
+        this.pageSize = pageSize;
+        this.sortBy = sortBy;
+        this.hasPageable = hasPageable;
     }
 }
 

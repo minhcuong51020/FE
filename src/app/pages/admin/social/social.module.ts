@@ -8,6 +8,7 @@ import { RedditGroupDetailComponent } from './reddit-group-detail/reddit-group-d
 import { RedditComponent } from './reddit/reddit.component';
 import { RedditUpdateComponent } from './reddit-update/reddit-update.component';
 import { SharedModule } from '@shared/shared.module';
+import { RedditDetailComponent } from './reddit-detail/reddit-detail.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { SharedModule } from '@shared/shared.module';
     RedditGroupUpdateComponent,
     RedditGroupDetailComponent,
     RedditComponent,
-    RedditUpdateComponent
+    RedditUpdateComponent,
+    RedditDetailComponent
   ],
   imports: [
     CommonModule,

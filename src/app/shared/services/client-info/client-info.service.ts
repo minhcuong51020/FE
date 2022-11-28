@@ -52,6 +52,16 @@ export class ClientInfoService extends AbstractService {
     });
   }
 
+  searchAuto(
+    params?: IClientInfoRequest,
+    loading = true
+  ): Observable<EntityResponseType<IClientInfo[]>> {
+    return super.get<IClientInfo[]>(`${this.baseURL}/auto-complete`, {
+      params,
+      loading,
+    });
+  }
+
   findById(
     id?: string,
     loading = true

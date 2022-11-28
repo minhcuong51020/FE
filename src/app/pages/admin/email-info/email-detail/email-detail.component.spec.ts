@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RedditGroupComponent } from './reddit-group.component';
+import { EmailDetailComponent } from './email-detail.component';
 
-describe('RedditGroupComponent', () => {
-  let component: RedditGroupComponent;
-  let fixture: ComponentFixture<RedditGroupComponent>;
+describe('EmailDetailComponent', () => {
+  let component: EmailDetailComponent;
+  let fixture: ComponentFixture<EmailDetailComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RedditGroupComponent ]
+      declarations: [ EmailDetailComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(RedditGroupComponent);
+    fixture = TestBed.createComponent(EmailDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

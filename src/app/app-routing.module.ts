@@ -38,9 +38,21 @@ const routes: Routes = [
         )
       },
       {
+        path:ROUTER_UTILS.emailInfo.root,
+        loadChildren : () => import('@pages/admin/email-info/email-info.module').then(
+          (m) => m.EmailInfoModule
+        )
+      },
+      {
         path:ROUTER_UTILS.userInfo.root,
         loadChildren : () => import('@pages/admin/user-info/user-info.module').then(
           (m) => m.UserInfoModule
+        )
+      },
+      {
+        path:ROUTER_UTILS.send.root,
+        loadChildren : () => import('@pages/admin/send/send.module').then(
+          (m) => m.SendModule
         )
       },
       {

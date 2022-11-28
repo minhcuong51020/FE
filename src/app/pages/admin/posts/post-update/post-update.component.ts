@@ -5,8 +5,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LENGTH_VALIDATOR } from '@shared/constants/validators.constant';
 import { IPosts } from '@shared/models/post/posts.model';
-import { ToastService } from '@shared/services/helpers/toast.service';
 import * as tinymce from 'tinymce/tinymce';
+import { ToastService } from '@shared/services/helpers/toast.service';
 
 @Component({
   selector: 'app-post-update',
@@ -86,9 +86,7 @@ export class PostUpdateComponent implements OnInit {
       title: this.form.get('title')?.value,
       content: this.form.get('content')?.value
     };
-
-    console.log(post);
-
+    
     if(this.action === ROUTER_ACTIONS.update) {
       this.update(post);
     } else {

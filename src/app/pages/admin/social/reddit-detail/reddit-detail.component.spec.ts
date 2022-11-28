@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RedditUpdateComponent } from './reddit-update.component';
+import { RedditDetailComponent } from './reddit-detail.component';
 
-describe('RedditUpdateComponent', () => {
-  let component: RedditUpdateComponent;
-  let fixture: ComponentFixture<RedditUpdateComponent>;
+describe('RedditDetailComponent', () => {
+  let component: RedditDetailComponent;
+  let fixture: ComponentFixture<RedditDetailComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RedditUpdateComponent ]
+      declarations: [ RedditDetailComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(RedditUpdateComponent);
+    fixture = TestBed.createComponent(RedditDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

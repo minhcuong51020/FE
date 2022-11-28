@@ -27,8 +27,6 @@ export class LoadingInterceptor implements HttpInterceptor {
     if (!!request.headers.get(HTTP_HEADERS.X_LOADING)) {
       this.totalRequests++;
       this.loadingService.show();
-
-      // chỉ ẩn spinner khi số request = 0
       return next.handle(request).pipe(
         finalize(() => {
           this.totalRequests--;

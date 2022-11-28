@@ -32,18 +32,18 @@
     <!--end filter element -->
     <div class="row mt-3">
       <div class="col-12">
-        <nz-table  #table [nzData]="reddits" [nzNoResult]="noDataResult">
+        <nz-table  #table [nzData]="emails" [nzNoResult]="noDataResult">
           <thead>
             <tr>
                 <th nzAlign="center">{{ "common.index" | translate }}</th>
                 <th nzAlign="center">
-                    {{ 'reddit.displayName' | translate }}
+                    {{ 'email.email' | translate }}
                 </th>
                 <th nzAlign="center">
-                  {{ 'reddit.group.createdAt' | translate }}
+                    {{ 'email.createdAt' | translate }}
                 </th>
                 <th nzAlign="center">
-                    {{ 'reddit.group.modifiedAt' | translate }}
+                    {{ 'email.modifiedAt' | translate }}
                   </th>
                 <th nzAlign="center">
                     {{ "action.msg" | translate }}
@@ -51,10 +51,10 @@
             </tr>
           </thead>
           <tbody>
-            <ng-container *ngFor="let item of reddits; let i = index">
+            <ng-container *ngFor="let item of emails; let i = index">
                 <tr>
                     <td nzAlign="center">{{ i + 1 }}</td>
-                    <td nzAlign="center">{{ item?.nameDisplay }}</td>
+                    <td nzAlign="center">{{ item?.email }}</td>
                     <td nzAlign="center">{{ item?.createdAt }}</td>
                     <td nzAlign="center">{{ item?.modifiedAt }}</td>
                     <td nzAlign="center">

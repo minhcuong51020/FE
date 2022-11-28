@@ -60,10 +60,25 @@
                       limitWord:25 }}></td>
                     <td nzAlign="center">{{ item.createdAt }}</td>
                     <td nzAlign="center">
-                        <mb-button-action [action]="'edit'" className="center" nzTooltipTitle="{{ 'action.update' | translate }}"
+                        <mb-button-action [action]="'view'" className="first" nzTooltipTitle="{{ 'action.detail' | translate }}"
+                            nzTooltipPlacement="top" nz-tooltip>
+                        </mb-button-action>
+                        <mb-button-action [action]="'send'" className="first" nzTooltipTitle="{{ 'action.sms' | translate }}"
+                            nzTooltipPlacement="top" nz-tooltip (click)="sendToSms(item)">
+                        </mb-button-action>
+                        <mb-button-action [action]="'email'" className="center" nzTooltipTitle="{{ 'action.email' | translate }}"
+                            nzTooltipPlacement="top" nz-tooltip (click)="sendToEmail(item)">
+                        </mb-button-action>
+                        <mb-button-action [action]="'line'" className="center" nzTooltipTitle="{{ 'action.line' | translate }}"
+                            nzTooltipPlacement="top" nz-tooltip>
+                        </mb-button-action>
+                        <mb-button-action [action]="'reddit'" className="center" nzTooltipTitle="{{ 'action.reddit' | translate }}"
+                            nzTooltipPlacement="top" nz-tooltip (click)="postToReddit(item)">
+                        </mb-button-action>
+                        <mb-button-action [action]="'edit'" className="last" nzTooltipTitle="{{ 'action.update' | translate }}"
                             nzTooltipPlacement="top" nz-tooltip (click)="update(item)">
                         </mb-button-action>
-                        <mb-button-action [action]="'delete'" [className]="'center'" (click)="delete(item)"
+                        <mb-button-action [action]="'delete'" [className]="'last'" (click)="delete(item)"
                             nzTooltipTitle="{{'action.delete' | translate}}" nzTooltipPlacement="top" nz-tooltip>
                         </mb-button-action>
                     </td>

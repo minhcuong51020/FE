@@ -16,6 +16,14 @@ export const ROUTER_UTILS = {
     root: 'authentication',
     login: 'login',
   },
+  emailInfo: {
+    root: 'email-info',
+    list: '',
+    emailCreate: 'create',
+    emailUpdate: ':emailId/update',
+    emailDetail: ':emailId/detail'
+  }
+  ,
   social: {
     root: 'social',
     reddit: 'reddit',
@@ -26,6 +34,12 @@ export const ROUTER_UTILS = {
     redditGroupCreate: 'reddit-group/create',
     redditGroupUpdate: 'reddit-group/:redditGroupId/update',
     redditGroupDetail: 'reddit-group/:redditGroupId/detail',
+  },
+  send: {
+    root: 'send',
+    sendReddit: ":postId/push-reddit",
+    sendEmail: ":postId/push-email",
+    sendSms: ":postId/push-sms"
   },
   posts: {
     root: 'posts',

@@ -3,26 +3,27 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { PAGINATION } from '@shared/constants/pagination.constants';
-import { Reddit, RedditRequest } from '@shared/models/social/reddit.models';
+import { Email, EmailRequest } from '@shared/models/post/email.models';
 import { AuthService } from '@shared/services/auth/auth.service';
 import { ToastService } from '@shared/services/helpers/toast.service';
-import { RedditServiceService } from '@shared/services/social/reddit-service.service';
+import { EmailService } from '@shared/services/posts/email.service';
 import CommonUtil from '@shared/utils/common-utils';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
 import { NzTableQueryParams } from 'ng-zorro-antd/table';
-import { RedditUpdateComponent } from '../reddit-update/reddit-update.component';
+import { EmailDetailComponent } from '../email-detail/email-detail.component';
+import { EmailUpdateComponent } from '../email-update/email-update.component';
 
 @Component({
-  selector: 'app-reddit',
-  templateUrl: './reddit.component.html',
-  styleUrls: ['./reddit.component.scss']
+  selector: 'app-email',
+  templateUrl: './email.component.html',
+  styleUrls: ['./email.component.scss']
 })
-export class RedditComponent implements OnInit {
+export class EmailComponent implements OnInit {
 
-  reddits!: Reddit[];
-  reddit!: Reddit;
+  emails!: Email[];
+  email!: Email;
 
-  redditRequest: RedditRequest = {};
+  emailRequest: EmailRequest = {};
 
   pageIndex = PAGINATION.PAGE_DEFAULT;
   pageSize = 12;
@@ -39,7 +40,7 @@ export class RedditComponent implements OnInit {
     private modalService: NzModalService,
     private fb: FormBuilder,
     private translateService: TranslateService,
-    private redditService: RedditServiceService,
+    private emailService: EmailService,
     private authService: AuthService,
   ) { 
     this.initForm();
@@ -51,7 +52,7 @@ export class RedditComponent implements OnInit {
 
   public create(): void {
     const base = CommonUtil.modalBase(
-      RedditUpdateComponent,
+      EmailUpdateComponent,
       {
         isUpdate: false,
       },
@@ -66,12 +67,12 @@ export class RedditComponent implements OnInit {
     });
   }
 
-  public update(item: Reddit): void {
+  public update(item: Email): void {
     const base = CommonUtil.modalBase(
-      RedditUpdateComponent,
+      EmailUpdateComponent,
       {
         isUpdate: true,
-        reddit: item
+        email: item
       },
       '50%'
     );
@@ -84,11 +85,11 @@ export class RedditComponent implements OnInit {
     });
   }
 
-  public detail(item: Reddit): void {
+  public detail(item: Email): void {
     const base = CommonUtil.modalBase(
-      Reddit,
+      EmailDetailComponent,
       {
-        redditGroup: item
+        email: item
       },
       '50%'
     );
@@ -101,17 +102,17 @@ export class RedditComponent implements OnInit {
     });
   }
 
-  public delete(item: Reddit): void {
+  public delete(item: Email): void {
     const deleteForm = CommonUtil.modalConfirm(
       this.translateService,
       'model.titleDelete',
       'model.contentDelete',
-      { name: item?.nameDisplay }
+      { name: item?.email }
     );
     const modal: NzModalRef = this.modalService.create(deleteForm);
     modal.afterClose.subscribe((result: { success: boolean; data: any }) => {
       if (result?.success) {
-        this.redditService.deleteReddit(item.id + "", true).subscribe((res) => {
+        this.emailService.delete(item.id + "", true).subscribe((res) => {
                  this.pageIndex = PAGINATION.PAGE_DEFAULT;
                  this.loadData(this.pageIndex, this.pageSize);
                  this.toast.success('model.successDelete');
@@ -126,21 +127,19 @@ export class RedditComponent implements OnInit {
     sortBy?: string,
     isLoading = true
   ): void {
-    this.redditRequest.pageIndex = pageNumber;
-    this.redditRequest.pageSize = size;
-    this.redditRequest.hasPageable = true;
-    this.redditRequest.sortBy = sortBy;
-    this.redditService.searchReddit(this.redditRequest, isLoading).subscribe(
+    this.emailRequest.pageIndex = pageNumber;
+    this.emailRequest.pageSize = size;
+    this.emailRequest.hasPageable = true;
+    this.emailRequest.sortBy = sortBy;
+    this.emailService.search(this.emailRequest, isLoading).subscribe(
       (response: any) => {
         const data = response?.body?.data;
         const page = response?.body?.page;
-        this.reddits = data;
-        console.log(this.reddits);
-        
+        this.emails = data;
         this.total = page.total || 0;
       },
       (error: any) => {
-        this.reddits = [];
+        this.emails = [];
         this.total = 0;
       }
     )
@@ -148,22 +147,22 @@ export class RedditComponent implements OnInit {
 
   private initForm(): void {
     this.form = this.fb.group({
-      keyword: this.redditRequest.keyword,
+      keyword: this.emailRequest.keyword,
     });
   }
 
   public getIndex(index: number): number {
     return CommonUtil.getIndex(
       index,
-      this.redditRequest.pageIndex,
-      this.redditRequest.pageSize
+      this.emailRequest.pageIndex,
+      this.emailRequest.pageSize
     );
   }
 
   public onQuerySearch(params: { pageIndex: number; pageSize: number }): void {
     const { pageIndex, pageSize } = params;
-    this.redditRequest.pageIndex = pageIndex;
-    this.redditRequest.pageSize = pageSize;
+    this.emailRequest.pageIndex = pageIndex;
+    this.emailRequest.pageSize = pageSize;
     this.loadData(pageIndex, pageSize);
   }
 
@@ -192,10 +191,11 @@ export class RedditComponent implements OnInit {
 
   public searchForm(): void {
     const keyword = this.form.get('keyword')?.value;
-    this.redditRequest.keyword = keyword;
+    this.emailRequest.keyword = keyword;
     this.pageIndex = PAGINATION.PAGE_DEFAULT;
-    console.log(this.redditRequest);
+    console.log(this.emailRequest);
     this.loadData(this.pageIndex, this.pageSize);
   }
+
 
 }

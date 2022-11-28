@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RedditComponent } from './reddit.component';
+import { SendSmsComponent } from './send-sms.component';
 
-describe('RedditComponent', () => {
-  let component: RedditComponent;
-  let fixture: ComponentFixture<RedditComponent>;
+describe('SendSmsComponent', () => {
+  let component: SendSmsComponent;
+  let fixture: ComponentFixture<SendSmsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RedditComponent ]
+      declarations: [ SendSmsComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(RedditComponent);
+    fixture = TestBed.createComponent(SendSmsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

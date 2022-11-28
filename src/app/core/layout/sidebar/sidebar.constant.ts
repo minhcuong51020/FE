@@ -31,6 +31,12 @@ export const SidebarConstant = [
     root: true
   },
   {
+    path: ROUTER_UTILS.emailInfo.root,
+    title: 'Quản lý email',
+    icon: 'file-text',
+    root: true
+  },
+  {
     path: ROUTER_UTILS.userInfo.root,
     title: 'Quản lý người dùng',
     icon: 'user',

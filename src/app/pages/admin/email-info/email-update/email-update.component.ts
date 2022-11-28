@@ -1,20 +1,20 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { STATUS } from '@shared/constants/status.constants';
-import { Reddit } from '@shared/models/social/reddit.models';
+import { Email } from '@shared/models/post/email.models';
 import { ToastService } from '@shared/services/helpers/toast.service';
-import { RedditServiceService } from '@shared/services/social/reddit-service.service';
+import { EmailService } from '@shared/services/posts/email.service';
 import { NzModalRef } from 'ng-zorro-antd/modal';
 
 @Component({
-  selector: 'app-reddit-update',
-  templateUrl: './reddit-update.component.html',
-  styleUrls: ['./reddit-update.component.scss']
+  selector: 'app-email-update',
+  templateUrl: './email-update.component.html',
+  styleUrls: ['./email-update.component.scss']
 })
-export class RedditUpdateComponent implements OnInit {
+export class EmailUpdateComponent implements OnInit {
 
   @Input() isUpdate = false;
-  @Input() reddit: Reddit = new Reddit();
+  @Input() email: Email = new Email();
   passwordVisible: boolean = false;
 
   form: FormGroup = new FormGroup({});
@@ -23,7 +23,7 @@ export class RedditUpdateComponent implements OnInit {
     private fb: FormBuilder,
     private modalRef: NzModalRef,
     private toast: ToastService,
-    private redditService: RedditServiceService
+    private emailService: EmailService
   ) {}
 
   ngOnInit(): void {
@@ -32,20 +32,11 @@ export class RedditUpdateComponent implements OnInit {
 
   initForm(): void {
     this.form = this.fb.group({
-      username: [
-        this.isUpdate ? this.reddit.username : '',
+      email: [
+        this.isUpdate ? this.email.email : '',
       ],
       password: [
-        this.isUpdate ? this.reddit.password : '',
-      ],
-      clientId: [
-        this.isUpdate ? this.reddit.clientId : '',
-      ],
-      clientSecret: [
-        this.isUpdate ? this.reddit.clientSecret : '',
-      ],
-      displayName: [
-        this.isUpdate ? this.reddit?.nameDisplay : '',
+        this.isUpdate ? this.email.password : '',
       ]
     })
   }
@@ -70,16 +61,16 @@ export class RedditUpdateComponent implements OnInit {
     //   CommonUtil.markFormGroupTouched(this.form);
     //   return;
     // }
-    const reddit: Reddit = {
+    const email: Email = {
       ...this.form.value,
     };
-    if (this.reddit?.id) {
-      this.redditService.updateReddit(reddit, this.reddit.id, true).subscribe((res) => {
+    if (this.email?.id) {
+      this.emailService.update(email, this.email.id, true).subscribe((res) => {
         if (res.status === STATUS.SUCCESS_200) {
-          this.toast.success('reddit.updateSuccess');
+          this.toast.success('email.updateSuccess');
           this.modalRef.close({
             success: true,
-            value: reddit,
+            value: email,
           });
         }
       });
@@ -91,17 +82,15 @@ export class RedditUpdateComponent implements OnInit {
     //   CommonUtil.markFormGroupTouched(this.form);
     //   return;
     // }
-    const reddit: Reddit = {
+    const email: Email = {
       ...this.form.value,
     };
-    console.log(reddit);
-    
-    this.redditService.createReddit(reddit, true).subscribe((res) => {
+    this.emailService.create(email, true).subscribe((res) => {
       if (res.status === STATUS.SUCCESS_200) {
-        this.toast.success('clientInfo.createSuccess');
+        this.toast.success('email.createSuccess');
         this.modalRef.close({
           success: true,
-          value: reddit,
+          value: email,
         });
       }
     },
@@ -109,5 +98,6 @@ export class RedditUpdateComponent implements OnInit {
       this.toast.error('Bạn chỉ có thể sở hữu một tài khoản reddit trong hệ thống');
     });
   }
+
 
 }

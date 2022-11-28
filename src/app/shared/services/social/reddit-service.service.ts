@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { SERVICE } from '@shared/constants/gateway-routes-api.constant';
-import { IRedditGroup, IRedditGroupRequest } from '@shared/models/social/reddit.models';
+import { IReddit, IRedditGroup, IRedditGroupRequest, IRedditRequest } from '@shared/models/social/reddit.models';
 import { Observable } from 'rxjs';
 import { AbstractService, EntityResponseType } from '../common/abstract.service';
 
@@ -66,4 +66,62 @@ export class RedditServiceService extends AbstractService {
       loading
     })
   }
+
+  public searchRedditGroupAuto(
+    params: IRedditGroupRequest,
+    loading = true
+  ): Observable<EntityResponseType<IRedditGroup[]>> {
+    return super.get<IRedditGroup[]>(`${this.hostRedditGroup}/auto-complete`, {
+      params,
+      loading
+    })
+  }
+
+  public createReddit(
+    reddit: IReddit,
+    loading = true
+  ): Observable<EntityResponseType<IReddit>> {
+    return super.post<IReddit>(`${this.hostReddit}`, reddit, {
+      loading
+    })
+  }
+
+  public updateReddit(
+    reddit: IReddit,
+    id: string,
+    loading = true
+  ): Observable<EntityResponseType<IReddit>> {
+    return super.post<IReddit>(`${this.hostReddit}/${id}/update`, reddit, {
+      loading
+    })
+  }
+
+  public detailReddit(
+    id: string,
+    loading = true
+  ): Observable<EntityResponseType<IReddit>> {
+    return super.get<IReddit>(`${this.hostReddit}/${id}/detail`, {
+      loading
+    })
+  }
+
+  public searchReddit(
+    params: IRedditRequest,
+    loading = true
+  ): Observable<EntityResponseType<IReddit[]>> {
+    return super.get<IReddit[]>(`${this.hostReddit}`, {
+      params,
+      loading
+    })
+  }
+
+  public deleteReddit(
+    id: string,
+    loading = true
+  ): Observable<EntityResponseType<IReddit>> {
+    return super.post<IReddit>(`${this.hostReddit}/${id}/delete`, {
+      loading
+    })
+  }
+
 }

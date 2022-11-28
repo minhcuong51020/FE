@@ -187,6 +187,10 @@
     "max": " tối đa là {{param}}"
   },
   "action": {
+    "email": "Gửi email",
+    "sms": "Gửi sms",
+    "line": "Gửi line",
+    "reddit": "Đăng lên reddit",
     "msg": "Hành động",
     "save": "Lưu",
     "create": "Tạo mới",

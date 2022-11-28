@@ -1,5 +1,5 @@
 import { PostsService } from './../../../../shared/services/posts/posts.service';
-import { PostRequest, Posts } from './../../../../shared/models/post/posts.model';
+import { IPosts, PostRequest, Posts } from './../../../../shared/models/post/posts.model';
 import { Component, OnInit } from '@angular/core';
 import { PAGINATION } from '@shared/constants/pagination.constants';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -145,6 +145,18 @@ export class PostComponent implements OnInit {
     this.postRequest.keyword = keyword;
     this.pageIndex = PAGINATION.PAGE_DEFAULT;
     this.loadData(this.pageIndex, this.pageSize);
+  }
+
+  postToReddit(item: IPosts) {
+    this.router.navigate([`${ROUTER_UTILS.send.root}/${item.id}/push-reddit`]);
+  }
+
+  sendToEmail(item: IPosts) {
+    this.router.navigate([`${ROUTER_UTILS.send.root}/${item.id}/push-email`]);
+  }
+
+  sendToSms(item: IPosts) {
+    this.router.navigate([`${ROUTER_UTILS.send.root}/${item.id}/push-sms`]);
   }
 
 }
