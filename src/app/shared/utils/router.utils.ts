@@ -34,12 +34,22 @@ export const ROUTER_UTILS = {
     redditGroupCreate: 'reddit-group/create',
     redditGroupUpdate: 'reddit-group/:redditGroupId/update',
     redditGroupDetail: 'reddit-group/:redditGroupId/detail',
+    line: 'line',
+    lineCreate: 'line/create',
+    lineUpdate: 'line/:lineId/update',
+    lineDetail: 'line/:lineId/detail',
+    twitter: 'twitter',
+    twitterCreate: 'twitter/create',
+    twitterUpdate: 'twitter/:twitterId/update',
+    twitterDetail: 'twitter/:twitterId/detail'
   },
   send: {
     root: 'send',
     sendReddit: ":postId/push-reddit",
     sendEmail: ":postId/push-email",
-    sendSms: ":postId/push-sms"
+    sendSms: ":postId/push-sms",
+    sendLine: ":postId/push-line",
+    sendTwitter: ":postId/push-twitter"
   },
   posts: {
     root: 'posts',

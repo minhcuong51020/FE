@@ -11,15 +11,6 @@ export class LoadingInterceptor implements HttpInterceptor {
 
   constructor(private loadingService: LoadingService) {}
 
-  /**
-   * Handle loading - spinner
-   *
-   * @author hieu.daominh
-   * @date 2021-07-27
-   * @param request request
-   * @param next next request
-   * @returns Observable<HttpEvent<any>>
-   */
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler

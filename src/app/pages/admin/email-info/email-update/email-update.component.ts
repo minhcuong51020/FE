@@ -1,9 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { STATUS } from '@shared/constants/status.constants';
+import { VALIDATORS } from '@shared/constants/validators.constant';
 import { Email } from '@shared/models/post/email.models';
 import { ToastService } from '@shared/services/helpers/toast.service';
 import { EmailService } from '@shared/services/posts/email.service';
+import CommonUtil from '@shared/utils/common-utils';
 import { NzModalRef } from 'ng-zorro-antd/modal';
 
 @Component({
@@ -34,9 +36,16 @@ export class EmailUpdateComponent implements OnInit {
     this.form = this.fb.group({
       email: [
         this.isUpdate ? this.email.email : '',
+        [
+          Validators.required,
+          Validators.pattern(VALIDATORS.EMAIL),
+        ],
       ],
       password: [
         this.isUpdate ? this.email.password : '',
+        [
+          Validators.required,
+        ],
       ]
     })
   }
@@ -57,10 +66,10 @@ export class EmailUpdateComponent implements OnInit {
   }
 
   private updateReddit(): void {
-    // if (this.form.invalid) {
-    //   CommonUtil.markFormGroupTouched(this.form);
-    //   return;
-    // }
+    if (this.form.invalid) {
+      CommonUtil.markFormGroupTouched(this.form);
+      return;
+    }
     const email: Email = {
       ...this.form.value,
     };
@@ -78,10 +87,10 @@ export class EmailUpdateComponent implements OnInit {
   }
 
   private createReddit(): void {
-    // if (this.form.invalid) {
-    //   CommonUtil.markFormGroupTouched(this.form);
-    //   return;
-    // }
+    if (this.form.invalid) {
+      CommonUtil.markFormGroupTouched(this.form);
+      return;
+    }
     const email: Email = {
       ...this.form.value,
     };
@@ -93,9 +102,6 @@ export class EmailUpdateComponent implements OnInit {
           value: email,
         });
       }
-    },
-    (erorr) => {
-      this.toast.error('Bạn chỉ có thể sở hữu một tài khoản reddit trong hệ thống');
     });
   }
 

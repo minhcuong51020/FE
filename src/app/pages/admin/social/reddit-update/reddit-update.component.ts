@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { STATUS } from '@shared/constants/status.constants';
 import { Reddit } from '@shared/models/social/reddit.models';
 import { ToastService } from '@shared/services/helpers/toast.service';
 import { RedditServiceService } from '@shared/services/social/reddit-service.service';
+import CommonUtil from '@shared/utils/common-utils';
 import { NzModalRef } from 'ng-zorro-antd/modal';
 
 @Component({
@@ -34,18 +35,33 @@ export class RedditUpdateComponent implements OnInit {
     this.form = this.fb.group({
       username: [
         this.isUpdate ? this.reddit.username : '',
+        [
+          Validators.required,
+        ],
       ],
       password: [
         this.isUpdate ? this.reddit.password : '',
+        [
+          Validators.required,
+        ],
       ],
       clientId: [
         this.isUpdate ? this.reddit.clientId : '',
+        [
+          Validators.required,
+        ],
       ],
       clientSecret: [
         this.isUpdate ? this.reddit.clientSecret : '',
+        [
+          Validators.required,
+        ],
       ],
-      displayName: [
+      nameDisplay: [
         this.isUpdate ? this.reddit?.nameDisplay : '',
+        [
+          Validators.required,
+        ],
       ]
     })
   }
@@ -66,10 +82,10 @@ export class RedditUpdateComponent implements OnInit {
   }
 
   private updateReddit(): void {
-    // if (this.form.invalid) {
-    //   CommonUtil.markFormGroupTouched(this.form);
-    //   return;
-    // }
+    if (this.form.invalid) {
+      CommonUtil.markFormGroupTouched(this.form);
+      return;
+    }
     const reddit: Reddit = {
       ...this.form.value,
     };
@@ -87,18 +103,16 @@ export class RedditUpdateComponent implements OnInit {
   }
 
   private createReddit(): void {
-    // if (this.form.invalid) {
-    //   CommonUtil.markFormGroupTouched(this.form);
-    //   return;
-    // }
+    if (this.form.invalid) {
+      CommonUtil.markFormGroupTouched(this.form);
+      return;
+    }
     const reddit: Reddit = {
       ...this.form.value,
     };
-    console.log(reddit);
-    
     this.redditService.createReddit(reddit, true).subscribe((res) => {
       if (res.status === STATUS.SUCCESS_200) {
-        this.toast.success('clientInfo.createSuccess');
+        this.toast.success('reddit.createSuccess');
         this.modalRef.close({
           success: true,
           value: reddit,
@@ -106,7 +120,7 @@ export class RedditUpdateComponent implements OnInit {
       }
     },
     (erorr) => {
-      this.toast.error('Bạn chỉ có thể sở hữu một tài khoản reddit trong hệ thống');
+      this.toast.error('reddit.createFail');
     });
   }
 

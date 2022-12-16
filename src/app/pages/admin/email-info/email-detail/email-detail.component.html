@@ -1,8 +1,6 @@
 <div class="content">
     <div *nzModalTitle>
-        <span>{{
-            (isUpdate ? "action.update" : "action.create")
-            }}</span>
+        <span>{{ "action.detail" | translate}}</span>
     </div>
     <div class="row">
         <div class="col-12">
@@ -11,13 +9,13 @@
                     <div class="col-12">
                         <div class="row">
                             <div class="col-6 mb-2">
-                                <label>{{ "reddit.username"}}
+                                <label>{{ "email.username" | translate}}
                                     <span class="text-danger">*</span></label>
                                 <input formControlName="email" nz-input/>
                             </div>
 
                             <div class="col-6 mb-2">
-                                <label>{{ "reddit.password" }}
+                                <label>{{ "email.password" | translate }}
                                     <span class="text-danger">*</span></label>
                                 <nz-input-group [nzSuffix]="suffixTemplate">
                                     <input formControlName="password" nz-input [type]="passwordVisible ? 'text' : 'password'" />
@@ -28,12 +26,12 @@
                                 </ng-template>
                             </div>
                             <div class="col-6 mb-2">
-                                <label>{{ "email.createdAt" }}
+                                <label>{{ "email.createdAt" | translate }}
                                     <span class="text-danger">*</span></label>
                                 <input formControlName="createdAt" nz-input/>
                             </div>
                             <div class="col-6 mb-2">
-                                <label>{{ "email.modifiedAt" }}
+                                <label>{{ "email.modifiedAt" | translate }}
                                     <span class="text-danger">*</span></label>
                                 <input formControlName="modifiedAt" nz-input/>
                             </div>

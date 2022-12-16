@@ -4,20 +4,20 @@
     <nz-table class="content mt-3">
       <div [formGroup]="form" class="filter-element">
         <div class="row p-4">
-          <div class="col-3">
+          <div class="col-12">
             <label>{{ "common.keyword" | translate }}</label>
             <nz-input-group nzPrefixIcon="search" class="search-group">
-              <input type="text" nz-input formControlName="keyword" [placeholder]="'model.user.searchTitle' | translate"/>
+              <input type="text" nz-input formControlName="keyword" [placeholder]="'keyword' | translate"/>
             </nz-input-group>
           </div>
          </div>
         <div class="row mt-3 mb-3 text-center">
           <div class="col-12">
             <button class="me-3" nz-button nzType="default" (click)="resetSearch()">
-              {{ "action.reset" | translate }}
+              <span nz-icon nzType="undo" nzTheme="outline"></span>{{ "action.reset" | translate }}
             </button>
             <button nz-button nzType="primary" (click)="searchForm()">
-                {{ "common.search" | translate }}
+              <span nz-icon nzType="search" nzTheme="outline"></span>{{ "common.search" | translate }}
             </button>
           </div>
         </div>
@@ -63,6 +63,9 @@
                     <td nzAlign="center">{{ item.phone }}</td>
                     <td nzAlign="center">{{ item.email }}</td>
                     <td nzAlign="center">
+                      <mb-button-action [action]="'view'" className="center" (click)="detail(item)"
+                        nzTooltipTitle="{{ 'action.update' | translate }}"
+                        nzTooltipPlacement="top" nz-tooltip></mb-button-action>
                         <mb-button-action [action]="'edit'" className="center" (click)="update(item)"
                         nzTooltipTitle="{{ 'action.update' | translate }}"
                         nzTooltipPlacement="top" nz-tooltip></mb-button-action>

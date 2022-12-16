@@ -1,15 +1,16 @@
 import { AfterContentInit, AfterViewInit, Component, DoCheck, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IPostRedditRequest } from '@shared/models/post/post-reddit.model';
 import { IPosts, Posts } from '@shared/models/post/posts.model';
-import { RedditGroup } from '@shared/models/social/reddit.models';
+import { IReddit, Reddit, RedditGroup } from '@shared/models/social/reddit.models';
 import { ToastService } from '@shared/services/helpers/toast.service';
 import { PostsService } from '@shared/services/posts/posts.service';
 import { RedditServiceService } from '@shared/services/social/reddit-service.service';
 import { ROUTER_UTILS } from '@shared/utils/router.utils';
 import { TransferItem } from 'ng-zorro-antd/transfer';
 import { htmlToJson } from "@contentstack/json-rte-serializer";
+import CommonUtil from '@shared/utils/common-utils';
 
 @Component({
   selector: 'app-send-reddit',
@@ -21,7 +22,7 @@ export class SendRedditComponent implements OnInit {
   panels = [
     {
       active: false,
-      name: 'Thông tin bài viết',
+      name: 'post.info.root',
       disabled: false
     },
   ]
@@ -30,6 +31,7 @@ export class SendRedditComponent implements OnInit {
   private redditGroups: RedditGroup[] = [];
   postId!: string;
   post!: IPosts;
+  reddits!: Reddit[];
   $asTransferItems = (data: unknown): TransferItem[] => data as TransferItem[];
 
   constructor(
@@ -56,13 +58,36 @@ export class SendRedditComponent implements OnInit {
         }
       }
     )
+    this.redditService.searchReddit({}, true).subscribe(
+      (res: any) => {
+        if(res?.status === 200) {
+          const data = res.body?.data;
+          this.reddits = data;
+          this.initTransfer();
+        }
+      }
+    )
     this.postService.detail(this.postId).subscribe(
       (res) => {
         if(res.status === 200 && res.body?.data) {
           this.post = res.body?.data;
         }
+      },
+      (error) => {
+        this.router.navigate([`/404`]);
+        this.toast.error("post.notFound");
       }
     )
+    this.initForm();
+  }
+
+  initForm() {
+    this.form = this.fb.group({
+      redditId: [
+        '',
+        [Validators.required],
+      ]
+    })
   }
 
   private initTransfer(): void {
@@ -87,6 +112,10 @@ export class SendRedditComponent implements OnInit {
   }
 
   onSubmit(): void {
+    if (this.form.invalid) {
+      CommonUtil.markFormGroupTouched(this.form);
+      return;
+    }
     const postRedditIds: string[] = [];
     const postRedditNameUrls: string[] = [];
     this.list.forEach(
@@ -101,6 +130,7 @@ export class SendRedditComponent implements OnInit {
       postId: this.postId,
       redditIds: postRedditIds,
       redditNameUrls: postRedditNameUrls,
+      redditId: this.form.get('redditId')?.value
     }
     this.postService.sendReddit(postRedditRequest, true).subscribe(
       (res) => {

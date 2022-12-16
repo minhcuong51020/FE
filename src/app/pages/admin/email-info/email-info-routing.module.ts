@@ -10,7 +10,7 @@ const routes: Routes = [
     path: ROUTER_UTILS.emailInfo.list,
     component: EmailComponent,
     data: {
-      title: "Email cá nhân",
+      title: 'email.management',
     }
   },
 

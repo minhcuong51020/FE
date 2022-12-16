@@ -63,7 +63,8 @@ export class LoginComponent implements OnInit {
           password: this.f.password.value
         }
         console.log(loginRequest);
-        this.authService.login(loginRequest).subscribe((token) => {
+        this.authService.login(loginRequest).subscribe(
+          (token) => {
             if (token) {
               const loginResponse = token?.body?.data;
               if(loginResponse && loginResponse.accessToken) {
@@ -78,6 +79,9 @@ export class LoginComponent implements OnInit {
               this.router.navigate([`dashboard`]);
               this.toast.success('model.login.success.authenticate');
             }
+          },
+          (error) => {
+            this.toast.error('model.login.error.unauthorized');
           });
     } else {
       Object.values(this.loginForm.controls).forEach((control) => {
@@ -96,18 +100,5 @@ export class LoginComponent implements OnInit {
       console.log("chua login");
       this.router.navigate(['home']);
     }
-    // this.eventManagerService.subscribe('reload', (res: any) => {
-    //   this.router.navigate(['/']);
-    // });
-    // const jwt =
-    //   this.localStorage.retrieve(LOCAL_STORAGE.JWT_TOKEN) ||
-    //   this.sessionStorage.retrieve(SESSION_STORAGE.JWT_TOKEN);
-    // if (jwt) {
-    //   if (this.authService.getCurrentUser() === null) {
-    //     this.authService.storeProfile('/', false);
-    //   } else {
-    //     this.router.navigate(['/']);
-    //   }
-    // }
   }
 }

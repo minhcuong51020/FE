@@ -1,10 +1,11 @@
 import { RedditServiceService } from './../../../../shared/services/social/reddit-service.service';
 import { RedditGroup } from './../../../../shared/models/social/reddit.models';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzModalRef } from 'ng-zorro-antd/modal';
 import { ToastService } from '@shared/services/helpers/toast.service';
 import { STATUS } from '@shared/constants/status.constants';
+import CommonUtil from '@shared/utils/common-utils';
 
 @Component({
   selector: 'app-reddit-group-update',
@@ -33,12 +34,21 @@ export class RedditGroupUpdateComponent implements OnInit {
     this.form = this.fb.group({
       name: [
         this.isUpdate ? this.redditGroup.name : '',
+        [
+          Validators.required,
+        ],
       ],
       nameUrl: [
         this.isUpdate ? this.redditGroup.nameUrl : '',
+        [
+          Validators.required,
+        ],
       ],
       description: [
         this.isUpdate ? this.redditGroup.description : '',
+        [
+          Validators.required,
+        ],
       ]
     })
   }
@@ -59,17 +69,17 @@ export class RedditGroupUpdateComponent implements OnInit {
   }
 
   private updateRedditGroup(): void {
-    // if (this.form.invalid) {
-    //   CommonUtil.markFormGroupTouched(this.form);
-    //   return;
-    // }
+    if (this.form.invalid) {
+      CommonUtil.markFormGroupTouched(this.form);
+      return;
+    }
     const redditGroup: RedditGroup = {
       ...this.form.value,
     };
     if (this.redditGroup?.id) {
       this.redditService.updateRedditGroup(redditGroup, this.redditGroup.id, true).subscribe((res) => {
         if (res.status === STATUS.SUCCESS_200) {
-          this.toast.success('reddit.updateSuccess');
+          this.toast.success('reddit.group.updateSuccess');
           this.modalRef.close({
             success: true,
             value: redditGroup,
@@ -80,17 +90,17 @@ export class RedditGroupUpdateComponent implements OnInit {
   }
 
   private createRedditGroup(): void {
-    // if (this.form.invalid) {
-    //   CommonUtil.markFormGroupTouched(this.form);
-    //   return;
-    // }
+    if (this.form.invalid) {
+      CommonUtil.markFormGroupTouched(this.form);
+      return;
+    }
     const redditGroup: RedditGroup = {
       ...this.form.value,
     };
 
     this.redditService.createRedditGroup(redditGroup, true).subscribe((res) => {
       if (res.status === STATUS.SUCCESS_200) {
-        this.toast.success('clientInfo.createSuccess');
+        this.toast.success('reddit.group.createSuccess');
         this.modalRef.close({
           success: true,
           value: redditGroup,

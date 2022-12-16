@@ -63,7 +63,7 @@ export class PostComponent implements OnInit {
     const modal: NzModalRef = this.modalService.create(deleteForm);
     modal.afterClose.subscribe((result: { success: boolean; data: any }) => {
       if (result?.success) {
-        this.postsService.delete(post.id, true).subscribe((res) => {
+        this.postsService.delete(post.id + "", true).subscribe((res) => {
                  this.pageIndex = PAGINATION.PAGE_DEFAULT;
                  this.loadData(this.pageIndex, this.pageSize);
                  this.toast.success('model.successDelete');
@@ -147,6 +147,10 @@ export class PostComponent implements OnInit {
     this.loadData(this.pageIndex, this.pageSize);
   }
 
+  detail(item: IPosts) {
+    this.router.navigate([`${ROUTER_UTILS.posts.root}/${item.id}/detail`]);
+  }
+
   postToReddit(item: IPosts) {
     this.router.navigate([`${ROUTER_UTILS.send.root}/${item.id}/push-reddit`]);
   }
@@ -157,6 +161,28 @@ export class PostComponent implements OnInit {
 
   sendToSms(item: IPosts) {
     this.router.navigate([`${ROUTER_UTILS.send.root}/${item.id}/push-sms`]);
+  }
+
+  sendToLine(item: IPosts) {
+    this.router.navigate([`${ROUTER_UTILS.send.root}/${item.id}/push-line`]);
+  }
+
+  sendToTwitter(item: IPosts) {
+    this.router.navigate([`${ROUTER_UTILS.send.root}/${item.id}/push-twitter`]);
+  }
+
+  formatDateToString(date: any): string {
+    if (!date) {
+      return '';
+    }
+    const dateCurrent = new Date(date);
+    return (
+      [
+        dateCurrent.getDate() < 10 ? `0${dateCurrent.getDate()}` : dateCurrent.getDate(),
+        dateCurrent.getMonth() + 1 < 10 ? `0${dateCurrent.getMonth() + 1}` : dateCurrent.getMonth() + 1,
+        dateCurrent.getFullYear(),
+      ].join('-')
+    ).toString();
   }
 
 }

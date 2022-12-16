@@ -7,6 +7,7 @@ import { LENGTH_VALIDATOR } from '@shared/constants/validators.constant';
 import { IPosts } from '@shared/models/post/posts.model';
 import * as tinymce from 'tinymce/tinymce';
 import { ToastService } from '@shared/services/helpers/toast.service';
+import CommonUtil from '@shared/utils/common-utils';
 
 @Component({
   selector: 'app-post-update',
@@ -62,7 +63,6 @@ export class PostUpdateComponent implements OnInit {
     this.form = this.fb.group({
       title: [
         this.action === ROUTER_ACTIONS.update ? this.posts.title : '',
-
         [
           Validators.required,
           Validators.maxLength(LENGTH_VALIDATOR.TITLE_MAX_LENGTH.MAX),
@@ -81,6 +81,10 @@ export class PostUpdateComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.form.invalid) {
+      CommonUtil.markFormGroupTouched(this.form);
+      return;
+    }
     const post: IPosts = {
       ...this.form.value,
       title: this.form.get('title')?.value,

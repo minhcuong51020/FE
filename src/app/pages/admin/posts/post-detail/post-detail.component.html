@@ -1,1 +1,179 @@
-<p>post-detail works!</p>
+<div class="title mb-3">
+    <mb-table-title [showBack]="true" [title]="'action.detail'"></mb-table-title>
+</div>
+<div class="row mt-3">
+    <div class="col-12">
+        <nz-tabset
+            [nzSelectedIndex]="tabIndex"
+            (nzSelectedIndexChange)="onChangeTab($event)">
+            <nz-tab [nzTitle]="'post.info.root' | translate">
+                <ng-container [ngTemplateOutlet]="postInfo" [ngTemplateOutletContext]="{}">
+                </ng-container>
+            </nz-tab>
+            <nz-tab [nzTitle]="'post.info.email.root' | translate">
+                <ng-container [ngTemplateOutlet]="emailInfo" [ngTemplateOutletContext]="{}">
+                </ng-container>
+            </nz-tab>
+            <nz-tab [nzTitle]="'post.info.sms.root' | translate">
+                <ng-container [ngTemplateOutlet]="smsInfo" [ngTemplateOutletContext]="{}">
+                </ng-container>
+            </nz-tab>
+            <nz-tab [nzTitle]="'post.info.reddit.root' | translate">
+                <ng-container [ngTemplateOutlet]="redditInfo" [ngTemplateOutletContext]="{}">
+                </ng-container>
+            </nz-tab>
+            <nz-tab [nzTitle]="'post.info.social.root' | translate">
+                <ng-container [ngTemplateOutlet]="socialInfo" [ngTemplateOutletContext]="{}">
+                </ng-container>
+            </nz-tab>
+        </nz-tabset>
+
+        <ng-template #postInfo>
+            <section class="content section-post-info">
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <div class="text-center">
+                            <h5>{{post?.title}}</h5>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-3">
+                        <div class="text-center">
+                            <div [innerHTML]="post?.content" class="mt-3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </ng-template>
+        <ng-template #emailInfo>
+            <section class="content section-custom">
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <nz-table #table [nzData]="postEmails || []" [nzNoResult]="noDataResult">
+                            <thead>
+                              <tr>
+                                <th nzAlign="center" >{{'common.index' | translate}}</th>
+                                <th nzAlign="center" >{{'post.info.email.name' | translate}}</th>
+                                <th nzAlign="center" >{{'post.info.email.email' | translate}}</th>
+                                <th nzAlign="center" >{{'post.info.email.address' | translate}}</th>
+                                <th nzAlign="center" >{{'post.info.email.timeSend' | translate}}</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <ng-container *ngFor="let item of postEmails; let i = index">
+                                <tr>
+                                  <td nzAlign="center">{{ i + 1 }}</td>
+                                  <td nzAlign="center">{{ item?.name }}</td>
+                                  <td nzAlign="center">{{ item?.email }}</td>
+                                  <td nzAlign="center">{{ item?.address }}</td>
+                                  <td nzAlign="center">{{ formatDateToString(item?.timeSend) }}</td>
+                                </tr>
+                              </ng-container>
+                            </tbody>
+                        </nz-table>
+                    </div>
+                </div>
+            </section>
+        </ng-template>
+        <ng-template #smsInfo>
+            <section class="content section-custom">
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <nz-table #table [nzData]="postSmss || []" [nzNoResult]="noDataResult">
+                            <thead>
+                              <tr>
+                                <th nzAlign="center" >{{'common.index' | translate}}</th>
+                                <th nzAlign="center" >{{'post.info.sms.name' | translate}}</th>
+                                <th nzAlign="center" >{{'post.info.sms.phone' | translate}}</th>
+                                <th nzAlign="center" >{{'post.info.sms.address' | translate}}</th>
+                                <th nzAlign="center" >{{'post.info.sms.timeSend' | translate}}</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <ng-container *ngFor="let item of postSmss; let i = index">
+                                <tr>
+                                  <td nzAlign="center">{{ i + 1 }}</td>
+                                  <td nzAlign="center">{{ item?.name }}</td>
+                                  <td nzAlign="center">{{ item?.phone }}</td>
+                                  <td nzAlign="center">{{ item?.address }}</td>
+                                  <td nzAlign="center">{{ formatDateToString(item?.timeSend) }}</td>
+                                </tr>
+                              </ng-container>
+                            </tbody>
+                        </nz-table>
+                    </div>
+                </div>
+            </section>
+        </ng-template>
+        <ng-template #redditInfo>
+            <section class="content section-custom">
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <nz-table #table [nzData]="postReddits || []" [nzNoResult]="noDataResult">
+                            <thead>
+                              <tr>
+                                <th nzAlign="center" >{{'common.index' | translate}}</th>
+                                <th nzAlign="center" >{{'post.info.reddit.name' | translate}}</th>
+                                <th nzAlign="center" >{{'post.info.reddit.nameUrl' | translate}}</th>
+                                <th nzAlign="center" >{{'post.info.reddit.timeSend' | translate}}</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <ng-container *ngFor="let item of postReddits; let i = index">
+                                <tr>
+                                  <td nzAlign="center">{{ i + 1 }}</td>
+                                  <td nzAlign="center">{{ item?.redditName }}</td>
+                                  <td nzAlign="center">{{ item?.redditUrl }}</td>
+                                  <td nzAlign="center">{{ formatDateToString(item?.timePostReddit) }}</td>
+                                </tr>
+                              </ng-container>
+                            </tbody>
+                        </nz-table>
+                    </div>
+                </div>
+            </section>
+        </ng-template>
+
+        <ng-template #socialInfo>
+            <section class="content section-custom">
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <nz-table #table [nzData]="postSocials || []" [nzNoResult]="noDataResult">
+                            <thead>
+                              <tr>
+                                <th nzAlign="center" >{{'common.index' | translate}}</th>
+                                <th nzAlign="center" >{{'post.info.social.name' | translate}}</th>
+                                <th nzAlign="center" >{{'post.info.social.type' | translate}}</th>
+                                <th nzAlign="center" >{{'post.info.social.timeSend' | translate}}</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <ng-container *ngFor="let item of postSocials; let i = index">
+                                <tr>
+                                  <td nzAlign="center">{{ i + 1 }}</td>
+                                  <td nzAlign="center">{{ item?.accountName }}</td>
+                                  <td nzAlign="center">
+                                    <img *ngIf="item?.typePostSocial === 'LINE'" width="32px" src="assets/images/icon/line.png">
+                                    <img *ngIf="item?.typePostSocial === 'TWITTER'" width="32px" src="assets/images/icon/twitter.png">
+                                  </td>
+                                  <td nzAlign="center">{{ formatDateToString(item?.timeSend) }}</td>
+                                </tr>
+                              </ng-container>
+                            </tbody>
+                        </nz-table>
+                    </div>
+                </div>
+            </section>
+        </ng-template>
+    </div>
+
+    <div class="col-12 text-center mt-5">
+        <button nz-button nzType="default" (click)="onCancel()">
+            {{ "action.back" | translate }}
+        </button>
+    </div>
+</div>
+<ng-template #noDataResult>
+    <mb-no-data></mb-no-data>
+</ng-template>
+  

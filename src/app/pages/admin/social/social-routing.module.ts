@@ -6,13 +6,32 @@ import { RedditComponent } from './reddit/reddit.component';
 import { ROUTER_UTILS } from './../../../shared/utils/router.utils';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LineComponent } from './line/line.component';
+import { TwitterComponent } from './twitter/twitter.component';
 
 const routes: Routes = [
+
+  {
+    path: ROUTER_UTILS.social.twitter,
+    component: TwitterComponent,
+    data: {
+      title: 'twitter.management'
+    }
+  },
+
+  {
+    path: ROUTER_UTILS.social.line,
+    component: LineComponent,
+    data: {
+      title: 'line.management'
+    }
+  },
+
   {
     path: ROUTER_UTILS.social.reddit,
     component: RedditComponent,
     data: {
-      title: "Reddit cá nhân"
+      title: 'reddit.management'
     }
   },
 
@@ -36,7 +55,7 @@ const routes: Routes = [
     path: ROUTER_UTILS.social.redditGroup,
     component: RedditGroupComponent,
     data: {
-      title: "Nhóm reddit"
+      title: 'reddit.group.management'
     }
   },
 

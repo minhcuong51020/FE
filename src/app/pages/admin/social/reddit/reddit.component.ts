@@ -10,6 +10,7 @@ import { RedditServiceService } from '@shared/services/social/reddit-service.ser
 import CommonUtil from '@shared/utils/common-utils';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
 import { NzTableQueryParams } from 'ng-zorro-antd/table';
+import { RedditDetailComponent } from '../reddit-detail/reddit-detail.component';
 import { RedditUpdateComponent } from '../reddit-update/reddit-update.component';
 
 @Component({
@@ -86,9 +87,9 @@ export class RedditComponent implements OnInit {
 
   public detail(item: Reddit): void {
     const base = CommonUtil.modalBase(
-      Reddit,
+      RedditDetailComponent,
       {
-        redditGroup: item
+        reddit: item
       },
       '50%'
     );
@@ -196,6 +197,20 @@ export class RedditComponent implements OnInit {
     this.pageIndex = PAGINATION.PAGE_DEFAULT;
     console.log(this.redditRequest);
     this.loadData(this.pageIndex, this.pageSize);
+  }
+
+  formatDateToString(date: any): string {
+    if (!date) {
+      return '';
+    }
+    const dateCurrent = new Date(date);
+    return (
+      [
+        dateCurrent.getDate() < 10 ? `0${dateCurrent.getDate()}` : dateCurrent.getDate(),
+        dateCurrent.getMonth() + 1 < 10 ? `0${dateCurrent.getMonth() + 1}` : dateCurrent.getMonth() + 1,
+        dateCurrent.getFullYear(),
+      ].join('-')
+    ).toString();
   }
 
 }

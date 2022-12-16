@@ -6,6 +6,7 @@ export enum TypePostUserInfo {
 export interface IPostUserInfoRequest {
     postId?: string;
     userInfoIds?: string[];
+    emailId?: string;
     type?: TypePostUserInfo
 }
 
@@ -13,11 +14,13 @@ export class PostUserInfoRequest implements IPostUserInfoRequest {
     constructor(
         public postId?: string,
         public userInfoIds?: string[],
-        public type?: TypePostUserInfo
+        public type?: TypePostUserInfo,
+        public emailId?: string
     ) {
         this.postId = postId;
         this.userInfoIds = userInfoIds;
         this.type = type;
+        this.emailId = emailId;
     }
 }
 

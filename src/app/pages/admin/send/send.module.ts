@@ -8,13 +8,17 @@ import { SendRedditComponent } from './send-reddit/send-reddit.component';
 import { NzTransferModule } from 'ng-zorro-antd/transfer';
 import { SendEmailComponent } from './send-email/send-email.component';
 import { SendSmsComponent } from './send-sms/send-sms.component';
+import { SendLineComponent } from './send-line/send-line.component';
+import { SendTwitterComponent } from './send-twitter/send-twitter.component';
 
 
 @NgModule({
   declarations: [
     SendRedditComponent,
     SendEmailComponent,
-    SendSmsComponent
+    SendSmsComponent,
+    SendLineComponent,
+    SendTwitterComponent
   ],
   imports: [
     CommonModule,

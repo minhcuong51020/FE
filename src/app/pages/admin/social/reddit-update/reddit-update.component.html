@@ -1,8 +1,7 @@
 <div class="content">
     <div *nzModalTitle>
         <span>{{
-            (isUpdate ? "action.update" : "action.create")
-            }}</span>
+            (isUpdate ? "action.update" : "action.create") | translate}}</span>
     </div>
     <div class="row">
         <div class="col-12">
@@ -11,14 +10,19 @@
                     <div class="col-12">
                         <div class="row">
                             <div class="col-6 mb-2">
-                                <label>{{ "reddit.username"}}
+                                <label>{{ "reddit.username"  | translate}}
                                     <span class="text-danger">*</span></label>
                                 <input formControlName="username" nz-input
-                                    placeholder="{{'reddit.enterUsername'}}" />
+                                    placeholder="{{'reddit.enterUsername' | translate}}" />
+                                    <ng-container *ngIf="form.get('username')?.touched || form.get('username')?.dirty">
+                                        <span class="text-danger" *ngIf="form.get('username')?.hasError('required')">
+                                            <mb-not-blank [value]="'reddit.username'"></mb-not-blank>
+                                        </span>
+                                    </ng-container>
                             </div>
 
                             <div class="col-6 mb-2">
-                                <label>{{ "reddit.password" }}
+                                <label>{{ "reddit.password"  | translate }}
                                     <span class="text-danger">*</span></label>
                                 <nz-input-group [nzSuffix]="suffixTemplate">
                                     <input formControlName="password" nz-input [type]="passwordVisible ? 'text' : 'password'"
@@ -28,10 +32,15 @@
                                     <i nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
                                         (click)="passwordVisible = !passwordVisible"></i>
                                 </ng-template>
+                                <ng-container *ngIf="form.get('password')?.touched || form.get('password')?.dirty">
+                                    <span class="text-danger" *ngIf="form.get('password')?.hasError('required')">
+                                        <mb-not-blank [value]="'reddit.password'"></mb-not-blank>
+                                    </span>
+                                </ng-container>
                             </div>
 
                             <div class="col-6 mb-2">
-                                <label>{{ "reddit.clientId" }}
+                                <label>{{ "reddit.clientId"  | translate }}
                                     <span class="text-danger">*</span></label>
                                 <nz-input-group [nzSuffix]="suffixTemplate">
                                     <input formControlName="clientId" nz-input [type]="passwordVisible ? 'text' : 'password'"
@@ -41,10 +50,15 @@
                                     <i nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
                                         (click)="passwordVisible = !passwordVisible"></i>
                                 </ng-template>
+                                <ng-container *ngIf="form.get('clientId')?.touched || form.get('clientId')?.dirty">
+                                    <span class="text-danger" *ngIf="form.get('clientId')?.hasError('required')">
+                                        <mb-not-blank [value]="'reddit.clientId'"></mb-not-blank>
+                                    </span>
+                                </ng-container>
                             </div>
 
                             <div class="col-6 mb-2">
-                                <label>{{ "reddit.clientSecret" }}
+                                <label>{{ "reddit.clientSecret"  | translate}}
                                     <span class="text-danger">*</span>
                                 </label>
                                 <nz-input-group [nzSuffix]="suffixTemplate">
@@ -55,13 +69,23 @@
                                     <i nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
                                         (click)="passwordVisible = !passwordVisible"></i>
                                 </ng-template>
+                                <ng-container *ngIf="form.get('clientSecret')?.touched || form.get('clientSecret')?.dirty">
+                                    <span class="text-danger" *ngIf="form.get('clientSecret')?.hasError('required')">
+                                        <mb-not-blank [value]="'reddit.clientSecret'"></mb-not-blank>
+                                    </span>
+                                </ng-container>
                             </div>
 
                             <div class="col-6 mb-2">
-                                <label>{{ "reddit.displayName" }}
+                                <label>{{ "reddit.displayName" | translate }}
                                     <span class="text-danger">*</span></label>
-                                <input formControlName="displayName" nz-input 
+                                <input formControlName="nameDisplay" nz-input 
                                     placeholder="{{'reddit.enterDisplayName' | translate}}" />
+                                    <ng-container *ngIf="form.get('nameDisplay')?.touched || form.get('nameDisplay')?.dirty">
+                                        <span class="text-danger" *ngIf="form.get('nameDisplay')?.hasError('required')">
+                                            <mb-not-blank [value]="'reddit.displayName'"></mb-not-blank>
+                                        </span>
+                                    </ng-container>
                             </div>
                         </div>
                     </div>

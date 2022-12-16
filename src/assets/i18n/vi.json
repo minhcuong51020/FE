@@ -1,14 +1,177 @@
 {
+
+  "keyword": "Nhập từ khóa tìm kiếm",
+
+  "pattern": " không đúng định dạng",
+
+  "maxLength": " độ dài tối đa 10 ký tự",
+
+  "start-title": "Hệ thống quản lý marketing",
+
+  "start-content": "Công cụ giúp bạn tối ưu hóa việc quản lý marketing",
+
+  "line": {
+    "single": "Tài khoản Line",
+    "management": "Quản lý tài khoản Line",
+    "channelName": "Tên bot",
+    "channelToken": "Mã truy cập bot",
+    "createdAt": "Ngày tạo",
+    "modifiedAt":"Ngày cập nhật",
+    "enterChannelName": "Nhập tên Line bot của bạn",
+    "enterChannelToken": "Nhập mã truy cập Line bot của bạn",
+    "createSuccess": "Thêm mới bot Line thành công",
+    "updateSuccess": "Cập nhật bot Line thành công",
+    "titleDelete": "Xác nhận xóa bot Line",
+    "contentDelete":"Bạn chắc chắn muốn xóa bot Line <b>{{name}}</b> không?",
+    "deleteSuccess": "Xóa bot Line thành công"
+  },
+
+  "twitter": {
+    "single":"Tài khoản Twitter",
+    "management": "Quản lý tài khoản Twitter",
+    "name": "Tên hiển thị",
+    "enterName": "Nhập tên hiển thị",
+    "consumerKey": "Khóa khách hàng",
+    "consumerSecret": "Khóa bí mật",
+    "oauthToken": "Mã thông báo",
+    "oauthTokenSecret": "Mã thông báo bí mật",
+    "enterConsumerKey": "Nhập khóa khách hàng",
+    "enterConsumerSecret": "Nhập khóa bí mật",
+    "enterOauthToken": "Nhập mã thông báo",
+    "enterOauthTokenSecret": "Nhập mã thông báo bí mật",
+    "createdAt": "Ngày tạo",
+    "modifiedAt":"Ngày cập nhật"
+  },
+
+  "send": {
+    "email": {
+      "management": "Marketing Email",
+      "push": "Gửi email cho khách hàng",
+      "root": "Chọn khách hàng để gửi email",
+      "available": "Khách hàng hiện tại",
+      "select": "Khách hàng đã chọn",
+      "account": "Chọn tài khoản email"
+    },
+    "sms": {
+      "management":"Marketing SMS",
+      "push": "Gửi sms cho khách hàng",
+      "root":"Chọn khách hàng để gửi sms",
+      "available": "Khách hàng hiện tại",
+      "select": "Khách hàng đã chọn"
+      
+    },
+    "reddit": {
+      "management":"Marketing Reddit",
+      "push": "Đăng bài lên nhóm Reddit",
+      "root":"Chọn nhóm Reddit",
+      "available": "Nhóm hiện tại",
+      "select": "Nhóm đã chọn",
+      "account":"Tài khoản reddit"
+    },
+    "line": {
+      "management": "BroadCast Line Chat",
+      "push": "Gửi tin nhắn quảng bá",
+      "select": "Chọn Bot của bạn",
+      "bot": "Line Bot"
+    },
+    "twitter": {
+      "management": "Marketing Twitter",
+      "push": "Đăng bài lên Twitter",
+      "select": "Chọn tài khoản Twitter của bạn",
+      "bot": "Tài khoản Twitter"
+    }
+  },
+
+  "email": {
+    "management": "Quản lý tài khoản Email",
+    "single":"Tài khoản Email",
+    "email": "Email",
+    "createdAt":"Ngày tạo",
+    "modifiedAt": "Ngày cập nhật",
+    "username": "Tài khoản email",
+    "password": "Mật khẩu email app",
+    "enterUsername": "Nhập tài khoản email của bạn",
+    "enterPassword":"Nhập mật khẩu email app của bạn",
+    "select": "Chọn email của bạn"
+  },
+
+  "reddit": {
+    "management": "Quản lý tài khoản Reddit",
+    "single": "Tài khoản reddit",
+    "displayName": "Tên hiển thị",
+    "username":"Tên đăng nhập",
+    "enterUsername": "Nhập tên đăng nhập của bạn",
+    "password":"Mật khẩu",
+    "clientSecret": " ClientSecret",
+    "clientId": "ClientId",
+    "enterPassword": "Nhập mật khẩu của bạn",
+    "enterClientId": "Nhập ClientId",
+    "enterClientSecret": "Nhập ClientSecret",
+    "enterDisplayName": "Nhập tên hiển thị",
+    "createdAt": "Ngày tạo",
+    "select": "Chọn tài khoản reddit của bạn",
+    "modifiedAt": "Ngày cập nhật",
+    "createSuccess": "Thêm mới tài khoản reddit thành công",
+    "updateSuccess": "Cập nhật tài khoản reddit thành công",
+    "group": {
+      "management": "Quản lý nhóm Reddit",
+      "createdAt": "Ngày tạo",
+      "modifiedAt": "Ngày cập nhật",
+      "name": "Tên nhóm",
+      "nameUrl": "Tên nhóm URL",
+      "enterName": "Nhập tên nhóm",
+      "enterNameUrl": "Nhập tên nhóm trên url",
+      "description":"Mô tả nhóm",
+      "enterDescription": "Nhập mô tả nhóm",
+      "list": "Danh sách nhóm Reddit",
+      "createSuccess": "Thêm mới nhóm reddit thành công",
+      "updateSuccess": "Cập nhật nhóm reddit thành công"
+    }
+  },
+
   "post": {
+    "management": "Quản lý bài viết",
     "title": "Tiêu đề bài viết",
     "content": "Nội dung bài viết",
     "titleEnter": "Nhập tiêu đề bài viết",
     "contentEnter": "Nhập nội dung bài viết",
+    "notFound": "Không tìm thấy bài viết",
     "createSuccess": "Tạo mới bài viết thành công",
     "createFail": "Tạo mới bài viết thất bại",
     "updateSuccess": "Cập nhật bài viết thành công",
     "updateFail": "Cập nhật bài viết thất bại",
-    "createdAt":"Ngày tạo"
+    "createdAt":"Ngày tạo",
+    "list": "Danh sách bài viết",
+    "detail": "Chi tiết bài viết",
+    "info": {
+      "root": "Thông tin bài viết",
+      "email": {
+        "root": "Khách hàng đã gửi email",
+        "name": "Tên khách hàng",
+        "email": "Email",
+        "address": "Địa chỉ",
+        "timeSend": "Thời gian gửi"
+      },
+      "sms": {
+        "root": "Khách hàng đã gửi sms",
+        "name": "Tên khách hàng",
+        "phone": "Số điện thoại",
+        "address": "Địa chỉ",
+        "timeSend": "Thời gian gửi"
+      },
+      "reddit": {
+        "root": "Nhóm reddit đã đăng",
+        "name": "Tên nhóm",
+        "nameUrl": "Tên nhóm URL",
+        "timeSend": "Thời gian gửi"
+      },
+      "social": {
+        "root": "Mạng xã hội khác",
+        "name": "Tên cá nhân hoặc tên bot",
+        "type": "Mạng xã hội",
+        "timeSend": "Thời gian gửi"
+      }
+    }
   },
 
   "clientInfo": {
@@ -18,7 +181,7 @@
     "address": "Địa chỉ",
     "phone": "Số điện thoại",
     "email": "Email",
-    "createAt": "Ngày tạo",
+    "createdAt": "Ngày tạo",
     "modifiedAt": "Ngày cập nhật",
     "list": "Danh sách khách hàng",
     "create": "Thêm mới khách hàng",
@@ -187,6 +350,7 @@
     "max": " tối đa là {{param}}"
   },
   "action": {
+    "twitter": "Đăng lên twitter",
     "email": "Gửi email",
     "sms": "Gửi sms",
     "line": "Gửi line",

@@ -9,6 +9,12 @@ import { RedditComponent } from './reddit/reddit.component';
 import { RedditUpdateComponent } from './reddit-update/reddit-update.component';
 import { SharedModule } from '@shared/shared.module';
 import { RedditDetailComponent } from './reddit-detail/reddit-detail.component';
+import { LineComponent } from './line/line.component';
+import { LineUpdateComponent } from './line-update/line-update.component';
+import { LineDetailComponent } from './line-detail/line-detail.component';
+import { TwitterComponent } from './twitter/twitter.component';
+import { TwitterUpdateComponent } from './twitter-update/twitter-update.component';
+import { TwitterDetailComponent } from './twitter-detail/twitter-detail.component';
 
 
 @NgModule({
@@ -18,7 +24,13 @@ import { RedditDetailComponent } from './reddit-detail/reddit-detail.component';
     RedditGroupDetailComponent,
     RedditComponent,
     RedditUpdateComponent,
-    RedditDetailComponent
+    RedditDetailComponent,
+    LineComponent,
+    LineUpdateComponent,
+    LineDetailComponent,
+    TwitterComponent,
+    TwitterUpdateComponent,
+    TwitterDetailComponent
   ],
   imports: [
     CommonModule,

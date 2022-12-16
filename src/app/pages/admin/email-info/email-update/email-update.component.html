@@ -11,23 +11,38 @@
                     <div class="col-12">
                         <div class="row">
                             <div class="col-6 mb-2">
-                                <label>{{ "email.username"}}
+                                <label>{{ "email.username" | translate }}
                                     <span class="text-danger">*</span></label>
                                 <input formControlName="email" nz-input
-                                    placeholder="{{'reddit.enterUsername'}}" />
+                                    placeholder="{{'email.enterUsername' | translate}}" />
+                                    <ng-container *ngIf="form.get('email')?.touched || form.get('email')?.dirty">
+                                        <span class="text-danger" *ngIf="form.get('email')?.hasError('required')">
+                                            <mb-not-blank [value]="'email.username'"></mb-not-blank>
+                                        </span>
+                                    </ng-container>
+                                    <ng-container *ngIf="form.get('email')?.touched || form.get('email')?.dirty">
+                                        <span class="text-danger" *ngIf="form.get('email')?.hasError('pattern')">
+                                            <small>{{'email.username' | translate}} {{'pattern' | translate}}</small>
+                                        </span>
+                                    </ng-container>
                             </div>
 
                             <div class="col-6 mb-2">
-                                <label>{{ "email.password" }}
+                                <label>{{ "email.password" | translate }}
                                     <span class="text-danger">*</span></label>
                                 <nz-input-group [nzSuffix]="suffixTemplate">
                                     <input formControlName="password" nz-input [type]="passwordVisible ? 'text' : 'password'"
-                                        placeholder="{{'reddit.enterPassword' | translate}}" />
+                                        placeholder="{{'email.enterPassword' | translate}}" />
                                 </nz-input-group>
                                 <ng-template #suffixTemplate>
                                     <i nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
                                         (click)="passwordVisible = !passwordVisible"></i>
                                 </ng-template>
+                                <ng-container *ngIf="form.get('password')?.touched || form.get('password')?.dirty">
+                                    <span class="text-danger" *ngIf="form.get('password')?.hasError('required')">
+                                        <mb-not-blank [value]="'email.password'"></mb-not-blank>
+                                    </span>
+                                </ng-container>
                             </div>
                         </div>
                     </div>

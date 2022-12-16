@@ -1,1 +1,54 @@
-<p>info-detail works!</p>
+<div class="content">
+    <div *nzModalTitle>
+        <span>{{ "action.detail" | translate }}</span>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <form [formGroup]="form">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-6 mb-2">
+                                <label>{{ "clientInfo.name" | translate }}</label>
+                                <input formControlName="name" nz-input />
+                            </div>
+
+                            <div class="col-6 mb-2">
+                                <label>{{ "clientInfo.email" | translate }}</label>
+                                <input formControlName="email" nz-input />
+                            </div>
+
+                            <div class="col-6 mb-2">
+                                <label>{{ "clientInfo.phone" | translate }}</label>
+                                <input formControlName="phone" nz-input />
+                            </div>
+
+                            <div class="col-6 mb-2">
+                                <label>{{ "clientInfo.address" | translate }}</label>
+                                <input formControlName="address" nz-input />
+                            </div>
+
+                            <div class="col-6 mb-2">
+                                <label>{{ "clientInfo.createdAt" | translate }}</label>
+                                <input formControlName="createdAt" nz-input />
+                            </div>
+
+                            <div class="col-6 mb-2">
+                                <label>{{ "clientInfo.modifiedAt" | translate }}</label>
+                                <input formControlName="modifiedAt" nz-input />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 text-center" *nzModalFooter>
+        <button nz-button nzType="default" class="e-2" (click)="onCancel()">
+            {{ "action.back" | translate }}
+        </button>
+    </div>
+</div>

@@ -8,6 +8,8 @@ import { AbstractService } from '../common/abstract.service';
 import { IFileResponse } from '@shared/models/post/file.models';
 import { IPostRedditRequest } from '@shared/models/post/post-reddit.model';
 import { IPostUserInfoRequest } from '@shared/models/post/post-user-info.models';
+import { IPostLine } from '@shared/models/post/post-line.model';
+import { IPostTwitter } from '@shared/models/post/post-twitter.model';
 
 @Injectable({
   providedIn: 'root'
@@ -106,6 +108,24 @@ export class PostsService extends AbstractService {
     loading = true
   ): Observable<EntityResponseType<any>> {
     return super.post<any>(`${this.hostSend}/sms`, postUserInfoRequest, {
+      loading
+    })
+  }
+
+  public sendLine(
+    postLine: IPostLine,
+    loading = true
+  ): Observable<EntityResponseType<any>> {
+    return super.post<any>(`${this.hostSend}/line`, postLine, {
+      loading
+    })
+  }
+
+  public sendTwitter(
+    postTwitter: IPostTwitter,
+    loading = true
+  ): Observable<EntityResponseType<any>> {
+    return super.post<any>(`${this.hostSend}/twitter`, postTwitter, {
       loading
     })
   }

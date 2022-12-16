@@ -1,22 +1,25 @@
-<div> 
+<div class="title mb-3">
+    <mb-table-title [showBack]="true" [title]="'send.email.push'"></mb-table-title>
+</div>
+<div class="mt-4"> 
     <nz-collapse>
         <nz-collapse-panel
           *ngFor="let panel of panels"
-          [nzHeader]="panel.name"
+          [nzHeader]="panel.name | translate"
           [nzActive]="panel.active"
           [nzDisabled]="panel.disabled"
         >
-            <div class="p-3">
+            <div class="p-3 text-center">
                 <span>
-                    <b>Tiêu đề: </b>
+                    <b>{{'post.title' | translate}}: </b>
                     {{post?.title}}
                 </span>
             </div>
-            <div class="p-3">
+            <div class="p-3 text-center">
                 <div>
-                    <b>Nội dung:</b>
+                    <b>{{'post.content' | translate}}:</b>
                 </div>
-                <div [innerHTML]="post?.content">
+                <div [innerHTML]="post?.content" class="mt-3">
                 </div>
             </div>
         </nz-collapse-panel>
@@ -28,16 +31,39 @@
         <section class="content mt-3">
             <div class="row mt-2">
                 <div class="col-12 mb-2">
+                    <form [formGroup]="form">
+                        <label>
+                            {{ 'send.email.account' | translate }}
+                        </label>
+                        <nz-select formControlName="emailId" nzAllowClear nzShowSearch removeOptionTitle nzPlaceHolder="{{
+                            'email.select' | translate
+                        }}">
+                            <nz-option *ngFor="let temp of emails" [nzLabel]="temp?.email" [nzValue]="temp?.id"
+                                [nzCustomContent]="true">
+                                <div container="body" [animation]="false" [openDelay]="100" [closeDelay]="0" [ngbTooltip]="temp?.name">
+                                    {{ temp?.email }}
+                                </div>
+                            </nz-option>
+                        </nz-select>
+                        <ng-container *ngIf="form.get('emailId')?.touched || form.get('emailId')?.dirty">
+                            <span class="text-danger" *ngIf="form.get('emailId')?.hasError('required')">
+                                <mb-not-blank [value]="'send.email.account'"></mb-not-blank>
+                            </span>
+                        </ng-container>
+                    </form>
+                </div>
+
+                <div class="col-12 mb-2">
                     <label>
-                        {{ 'send.email' | translate }}
+                        {{ 'send.email.root' | translate }}
                     </label>
                     
                     <div class="mt-4" id="dataTransfer">
                         <nz-transfer [nzListStyle]="{ 'height.px': 600, 'width': '100%' }"
                             [nzRenderList]="[renderList, renderList]"
                             [nzDataSource]="list.length ? list : []" nzShowSearch
-                            [nzNotFoundContent]="'send.groupReddit.empty' | translate "
-                            [nzTitles]="['send.groupReddit.available' | translate, 'send.groupReddit.select' | translate]">
+                            [nzNotFoundContent]="'send.email.empty' | translate "
+                            [nzTitles]="['send.email.available' | translate, 'send.email.select' | translate]">
                             <ng-template
                                 #renderList
                                 let-items
@@ -51,9 +77,9 @@
                                     <thead>
                                         <tr>
                                             <th></th>
-                                            <th>{{"email.name" | translate}}</th>
-                                            <th>{{"email.email" | translate}}</th>
-                                            <th>{{"email.address" | translate}}</th>
+                                            <th>{{"post.info.email.name" | translate}}</th>
+                                            <th>{{"post.info.email.email" | translate}}</th>
+                                            <th>{{"post.info.email.address" | translate}}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -78,13 +104,13 @@
 </div>
 
 <div class="row">
-    <div class="col-12 text-center">
-        <button nz-button nzType="default" class="e-2" (click)="onCancel()">
-            {{ "action.send" | translate }}
+    <div class="col-12 text-center mt-5">
+        <button nz-button nzType="default" class="me-2" (click)="onCancel()">
+            {{ "action.cancel" | translate }}
         </button>
 
-        <button nz-button nzType="primary" (click)="onSubmit()">
-            {{  "action.save" | translate }}
+        <button nz-button nzType="primary"  class="me-2" (click)="onSubmit()">
+            {{  "action.send" | translate }}
         </button>
     </div>
 </div>

@@ -15,6 +15,11 @@
                         <label>{{ 'post.title' | translate }} <span class="text-danger">*</span></label>
                         <input nz-input formControlName="title" class="form-control"
                             placeholder="{{ 'post.title' | translate }}" />
+                            <ng-container *ngIf="form.get('title')?.touched || form.get('title')?.dirty">
+                                <span class="text-danger" *ngIf="form.get('title')?.hasError('required')">
+                                    <mb-not-blank [value]="'post.title'"></mb-not-blank>
+                                </span>
+                            </ng-container>
                     </div>
                     <div class="col-12 mb-4">
                         <label>{{ 'post.content' | translate }} <span class="text-danger">*</span></label>
@@ -46,6 +51,11 @@
                             automatic_uploads: true
                         }"
                         ></editor>
+                        <ng-container *ngIf="form.get('content')?.touched || form.get('content')?.dirty">
+                            <span class="text-danger" *ngIf="form.get('content')?.hasError('required')">
+                                <mb-not-blank [value]="'post.content'"></mb-not-blank>
+                            </span>
+                        </ng-container>
                     </div>
                 </div>
             </section>
@@ -57,7 +67,7 @@
         <button nz-button nzType="default" class="me-3" (click)="onCancel()">
             {{ "action.cancel" | translate }}
         </button>
-        <button nz-button nzType="primary" (click)="onSubmit()">
+        <button nz-button nzType="primary" [disabled]="form.invalid" (click)="onSubmit()">
             {{ "action.save" | translate }}
         </button>
     </div>

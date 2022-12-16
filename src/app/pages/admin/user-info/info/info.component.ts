@@ -11,6 +11,7 @@ import { PAGINATION } from '@shared/constants/pagination.constants';
 import CommonUtil from '@shared/utils/common-utils';
 import { NzTableQueryParams } from 'ng-zorro-antd/table';
 import { InfoUpdateComponent } from '../info-update/info-update.component';
+import { InfoDetailComponent } from '../info-detail/info-detail.component';
 
 @Component({
   selector: 'app-info',
@@ -70,6 +71,23 @@ export class InfoComponent implements OnInit {
       InfoUpdateComponent,
       {
         isUpdate: true,
+        clientInfo: item
+      },
+      '50%'
+    );
+    const modal: NzModalRef = this.modalService.create(base);
+    modal.afterClose.subscribe((result) => {
+      if (result && result?.success) {
+        this.pageIndex = PAGINATION.PAGE_DEFAULT;
+        this.loadData(this.pageIndex, this.pageSize);
+      }
+    });
+  }
+
+  public detail(item: ClientInfo): void {
+    const base = CommonUtil.modalBase(
+      InfoDetailComponent,
+      {
         clientInfo: item
       },
       '50%'

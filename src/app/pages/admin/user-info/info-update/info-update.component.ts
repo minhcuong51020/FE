@@ -3,9 +3,10 @@ import { ClientInfo } from './../../../../shared/models/client-info/client-info.
 import { Component, Input, OnInit } from '@angular/core';
 import { ToastService } from '@shared/services/helpers/toast.service';
 import { NzModalRef } from 'ng-zorro-antd/modal';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import CommonUtil from '@shared/utils/common-utils';
 import { STATUS } from '@shared/constants/status.constants';
+import { VALIDATORS } from '@shared/constants/validators.constant';
 
 @Component({
   selector: 'app-info-update',
@@ -33,16 +34,31 @@ export class InfoUpdateComponent implements OnInit {
   initForm(): void {
     this.form = this.fb.group({
       name: [
-        this.isUpdate ? this.clientInfo.name : ''
+        this.isUpdate ? this.clientInfo.name : '',
+        [
+          Validators.required
+        ]
       ],
       address: [
-        this.isUpdate ? this.clientInfo.address : ''
+        this.isUpdate ? this.clientInfo.address : '',
+        [
+          Validators.required
+        ]
       ],
       email: [
-        this.isUpdate ? this.clientInfo.email : ''
+        this.isUpdate ? this.clientInfo.email : '',
+        [
+          Validators.required,
+          Validators.pattern(VALIDATORS.EMAIL),
+        ],
       ],
       phone: [
-        this.isUpdate ? this.clientInfo.phone : ''
+        this.isUpdate ? this.clientInfo.phone : '',
+        [
+          Validators.required,
+          Validators.pattern(VALIDATORS.PHONE),
+          Validators.maxLength(10)
+        ]
       ],
     })
   }
@@ -63,10 +79,10 @@ export class InfoUpdateComponent implements OnInit {
   }
 
   private updateClientInfo(): void {
-    // if (this.form.invalid) {
-    //   CommonUtil.markFormGroupTouched(this.form);
-    //   return;
-    // }
+    if (this.form.invalid) {
+      CommonUtil.markFormGroupTouched(this.form);
+      return;
+    }
     const clientInfo: ClientInfo = {
       ...this.form.value,
     };
@@ -84,10 +100,10 @@ export class InfoUpdateComponent implements OnInit {
   }
 
   private createClientInfo(): void {
-    // if (this.form.invalid) {
-    //   CommonUtil.markFormGroupTouched(this.form);
-    //   return;
-    // }
+    if (this.form.invalid) {
+      CommonUtil.markFormGroupTouched(this.form);
+      return;
+    }
     const clientInfo: ClientInfo = {
       ...this.form.value,
     };

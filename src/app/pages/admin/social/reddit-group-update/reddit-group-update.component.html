@@ -1,8 +1,7 @@
 <div class="content">
     <div *nzModalTitle>
         <span>{{
-            (isUpdate ? "action.update" : "action.create")
-            }}</span>
+            (isUpdate ? "action.update" : "action.create") | translate}}</span>
     </div>
     <div class="row">
         <div class="col-12">
@@ -11,25 +10,40 @@
                     <div class="col-12">
                         <div class="row">
                             <div class="col-6 mb-2">
-                                <label>{{ "reddit.group.name"}}
+                                <label>{{ "reddit.group.name" | translate}}
                                     <span class="text-danger">*</span></label>
                                 <input formControlName="name" nz-input
-                                    placeholder="{{'reddit.group.enterName'}}" />
+                                    placeholder="{{'reddit.group.enterName' | translate}}" />
+                                    <ng-container *ngIf="form.get('name')?.touched || form.get('name')?.dirty">
+                                        <span class="text-danger" *ngIf="form.get('name')?.hasError('required')">
+                                            <mb-not-blank [value]="'reddit.group.name'"></mb-not-blank>
+                                        </span>
+                                    </ng-container>
                             </div>
 
                             <div class="col-6 mb-2">
-                                <label>{{ "reddit.group.nameUrl" }}
+                                <label>{{ "reddit.group.nameUrl" | translate }}
                                     <span class="text-danger">*</span></label>
                                 <input formControlName="nameUrl" nz-input 
                                     placeholder="{{'reddit.group.enterNameUrl' | translate}}" />
+                                    <ng-container *ngIf="form.get('nameUrl')?.touched || form.get('nameUrl')?.dirty">
+                                        <span class="text-danger" *ngIf="form.get('nameUrl')?.hasError('required')">
+                                            <mb-not-blank [value]="'reddit.group.nameUrl'"></mb-not-blank>
+                                        </span>
+                                    </ng-container>
                             </div>
 
                             <div class="col-12 mb-2">
-                                <label>{{ "reddit.group.desciption" | translate }}
+                                <label>{{ "reddit.group.description" | translate }}
                                     <span class="text-danger">*</span></label>
                                 <textarea formControlName="description" nz-input
-                                    placeholder="{{'reddit.group.enterDesciption' | translate}}">
+                                    placeholder="{{'reddit.group.enterDescription' | translate}}">
                                 </textarea>
+                                <ng-container *ngIf="form.get('description')?.touched || form.get('description')?.dirty">
+                                    <span class="text-danger" *ngIf="form.get('description')?.hasError('required')">
+                                        <mb-not-blank [value]="'reddit.group.description'"></mb-not-blank>
+                                    </span>
+                                </ng-container>
                             </div>
                         </div>
                     </div>

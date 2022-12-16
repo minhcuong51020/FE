@@ -11,7 +11,7 @@ const routes: Routes = [
     path: ROUTER_UTILS.posts.list,
     component: PostComponent,
     data: {
-      title: "Danh sách bài viết",
+      title: 'post.management',
     }
   },
 

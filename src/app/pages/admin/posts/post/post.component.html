@@ -1,23 +1,23 @@
 <div class="content">
-    <mb-table-title [title]="'clientInfo.list'"></mb-table-title>
+    <mb-table-title [title]="'post.list'"></mb-table-title>
     <!-- filter element -->
     <nz-table class="content mt-3">
       <div [formGroup]="form" class="filter-element">
         <div class="row p-4">
-          <div class="col-3">
+          <div class="col-12">
             <label>{{ "common.keyword" | translate }}</label>
-            <nz-input-group nzPrefixIcon="search" class="search-group">
-              <input type="text" nz-input formControlName="keyword" [placeholder]="'model.user.searchTitle' | translate"/>
-            </nz-input-group>
+              <nz-input-group nzPrefixIcon="search" class="search-group" class="text-center">
+                <input type="text" nz-input formControlName="keyword" [placeholder]="'keyword' | translate"/>
+              </nz-input-group>
           </div>
          </div>
         <div class="row mt-3 mb-3 text-center">
           <div class="col-12">
             <button class="me-3" nz-button nzType="default" (click)="resetSearch()">
-              {{ "action.reset" | translate }}
+              <span nz-icon nzType="undo" nzTheme="outline"></span>{{ "action.reset" | translate }}
             </button>
             <button nz-button nzType="primary" (click)="searchForm()">
-                {{ "common.search" | translate }}
+              <span nz-icon nzType="search" nzTheme="outline"></span>{{ "common.search" | translate }}
             </button>
           </div>
         </div>
@@ -58,10 +58,10 @@
                     <td nzAlign="center" nz-tooltip>{{
                       item.content |
                       limitWord:25 }}></td>
-                    <td nzAlign="center">{{ item.createdAt }}</td>
+                    <td nzAlign="center">{{ formatDateToString(item.createdAt) }}</td>
                     <td nzAlign="center">
                         <mb-button-action [action]="'view'" className="first" nzTooltipTitle="{{ 'action.detail' | translate }}"
-                            nzTooltipPlacement="top" nz-tooltip>
+                            nzTooltipPlacement="top" nz-tooltip (click)="detail(item)">
                         </mb-button-action>
                         <mb-button-action [action]="'send'" className="first" nzTooltipTitle="{{ 'action.sms' | translate }}"
                             nzTooltipPlacement="top" nz-tooltip (click)="sendToSms(item)">
@@ -69,8 +69,11 @@
                         <mb-button-action [action]="'email'" className="center" nzTooltipTitle="{{ 'action.email' | translate }}"
                             nzTooltipPlacement="top" nz-tooltip (click)="sendToEmail(item)">
                         </mb-button-action>
+                        <mb-button-action [action]="'twitter'" className="center" nzTooltipTitle="{{ 'action.twitter' | translate }}"
+                            nzTooltipPlacement="top" nz-tooltip (click)="sendToTwitter(item)">
+                        </mb-button-action>
                         <mb-button-action [action]="'line'" className="center" nzTooltipTitle="{{ 'action.line' | translate }}"
-                            nzTooltipPlacement="top" nz-tooltip>
+                            nzTooltipPlacement="top" nz-tooltip (click)="sendToLine(item)">
                         </mb-button-action>
                         <mb-button-action [action]="'reddit'" className="center" nzTooltipTitle="{{ 'action.reddit' | translate }}"
                             nzTooltipPlacement="top" nz-tooltip (click)="postToReddit(item)">
@@ -95,5 +98,3 @@
 <ng-template #noDataResult>
 <mb-no-data></mb-no-data>
 </ng-template>
-
-  

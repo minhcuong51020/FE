@@ -20,7 +20,7 @@ export class SendSmsComponent implements OnInit {
   panels = [
     {
       active: false,
-      name: 'Thông tin bài viết',
+      name: 'post.info.root',
       disabled: false
     },
   ]
@@ -60,6 +60,10 @@ export class SendSmsComponent implements OnInit {
         if(res.status === 200 && res.body?.data) {
           this.post = res.body?.data;
         }
+      },
+      (error) => {
+        this.router.navigate([`/404`]);
+        this.toast.error("post.notFound");
       }
     )
   }

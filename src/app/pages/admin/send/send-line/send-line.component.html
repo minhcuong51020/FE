@@ -1,0 +1,70 @@
+<div class="title mb-3">
+    <mb-table-title [showBack]="true" [title]="'send.line.push'"></mb-table-title>
+</div>
+
+<div class="row">
+    <div class="col-9 mt-4"> 
+        <nz-collapse>
+            <nz-collapse-panel
+              *ngFor="let panel of panels"
+              [nzHeader]="panel.name | translate"
+              [nzActive]="panel.active"
+              [nzDisabled]="panel.disabled"
+            >
+                <div class="p-3 text-center">
+                    <span>
+                        <b>{{'post.title' | translate}}: </b>
+                        {{post?.title}}
+                    </span>
+                </div>
+                <div class="p-3 text-center">
+                    <div>
+                        <b>{{'post.content' | translate}}:</b>
+                    </div>
+                    <div [innerHTML]="post?.content" class="mt-3">
+                    </div>
+                </div>
+            </nz-collapse-panel>
+        </nz-collapse>
+    </div>
+    
+    <div class="col-3">
+        <section class="content mt-4">
+            <div class="row mt-2">
+                <form [formGroup]="form">
+                    <div class="col-12 mb-2">
+                        <label>
+                            {{ 'send.line.bot' | translate }}
+                        </label>
+                        <nz-select formControlName="lineId" nzAllowClear nzShowSearch removeOptionTitle nzPlaceHolder="{{
+                            'send.line.select' | translate
+                        }}">
+                            <nz-option *ngFor="let temp of lines" [nzLabel]="temp?.channelName" [nzValue]="temp?.id"
+                                [nzCustomContent]="true">
+                                <div container="body" [animation]="false" [openDelay]="100" [closeDelay]="0" [ngbTooltip]="temp?.name">
+                                    {{ temp?.channelName }}
+                                </div>
+                            </nz-option>
+                        </nz-select>
+                        <ng-container *ngIf="form.get('lineId')?.touched || form.get('lineId')?.dirty">
+                            <span class="text-danger" *ngIf="form.get('lineId')?.hasError('required')">
+                                <mb-not-blank [value]="'send.line.bot'"></mb-not-blank>
+                            </span>
+                        </ng-container>
+                    </div>
+                </form>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12 text-center mt-5">
+                    <button nz-button nzType="default" class="me-2" (click)="onCancel()">
+                        {{ "action.cancel" | translate }}
+                    </button>
+            
+                    <button nz-button nzType="primary" [disabled]="form.invalid" class="me-2" (click)="onSubmit()">
+                        {{  "action.send" | translate }}
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

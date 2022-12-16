@@ -23,3 +23,9 @@
         border-bottom-right-radius: 0px;
     }
 }
+
+::ng-deep {
+    .ant-collapse-content-box {
+        background-color: rgba(227,229,232,.5);
+    }
+}

@@ -5,6 +5,8 @@ export interface IClientInfo {
     phone?: string;
     email?: string;
     ownerId?: string;
+    createdAt?: Date;
+    modifiedAt?: Date;
 }
   
 export class ClientInfo implements IClientInfo {
@@ -14,7 +16,9 @@ export class ClientInfo implements IClientInfo {
       public address?: string,
       public phone?: string,
       public email?: string,
-      public ownerId?: string
+      public ownerId?: string,
+      public createdAt?: Date,
+      public modifiedAt?: Date
     ) {
       this.id = id;
       this.name = name;
@@ -22,6 +26,8 @@ export class ClientInfo implements IClientInfo {
       this.phone = phone;
       this.email = email;
       this.ownerId = ownerId;
+      this.createdAt = createdAt;
+      this.modifiedAt = modifiedAt;
     }
 }
 

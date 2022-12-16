@@ -11,7 +11,7 @@ const routes: Routes = [
     path: ROUTER_UTILS.userInfo.list,
     component: InfoComponent,
     data: {
-      title: "Danh sách thông tin khách hàng"
+      title: 'clientInfo.management'
     }
   },
 

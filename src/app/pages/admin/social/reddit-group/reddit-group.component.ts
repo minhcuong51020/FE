@@ -33,7 +33,7 @@ export class RedditGroupComponent implements OnInit {
   sortBy!: string;
   isVisible: boolean = false;
   form: FormGroup = new FormGroup({});
-
+  currentUserId!: string | null;
   constructor(
     private router: Router,
     private toast: ToastService,
@@ -48,6 +48,8 @@ export class RedditGroupComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadData(this.pageIndex, this.pageSize);
+    this.authService.loadUserId();
+    this.currentUserId = this.authService.getUserId();
   }
 
   public create(): void {
@@ -195,6 +197,27 @@ export class RedditGroupComponent implements OnInit {
     this.pageIndex = PAGINATION.PAGE_DEFAULT;
     console.log(this.redditGroupRequest);
     this.loadData(this.pageIndex, this.pageSize);
+  }
+
+  formatDateToString(date: any): string {
+    if (!date) {
+      return '';
+    }
+    const dateCurrent = new Date(date);
+    return (
+      [
+        dateCurrent.getDate() < 10 ? `0${dateCurrent.getDate()}` : dateCurrent.getDate(),
+        dateCurrent.getMonth() + 1 < 10 ? `0${dateCurrent.getMonth() + 1}` : dateCurrent.getMonth() + 1,
+        dateCurrent.getFullYear(),
+      ].join('-')
+    ).toString();
+  }
+
+  hidden(ownerId: string): boolean {
+    console.log(ownerId);
+    
+    this.authService.loadUserId();
+    return ownerId === this.authService.getUserId();
   }
 
 }
