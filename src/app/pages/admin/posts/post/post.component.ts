@@ -56,8 +56,8 @@ export class PostComponent implements OnInit {
   public delete(post: Posts): void {
     const deleteForm = CommonUtil.modalConfirm(
       this.translateService,
-      'model.titleDelete',
-      'model.contentDelete',
+      'post.titleDelete',
+      'post.contentDelete',
       { name: post?.title }
     );
     const modal: NzModalRef = this.modalService.create(deleteForm);
@@ -66,7 +66,7 @@ export class PostComponent implements OnInit {
         this.postsService.delete(post.id + "", true).subscribe((res) => {
                  this.pageIndex = PAGINATION.PAGE_DEFAULT;
                  this.loadData(this.pageIndex, this.pageSize);
-                 this.toast.success('model.successDelete');
+                 this.toast.success('post.successDelete');
                });
       }
     });

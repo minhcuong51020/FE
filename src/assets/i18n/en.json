@@ -1,4 +1,233 @@
 {
+
+  "keyword": "Enter the keyword",
+
+  "pattern": " pattern Invalid",
+
+  "maxLength": " max length 10 charactor",
+
+  "start-title": "System management marketing",
+
+  "start-content": "Tools to help you optimize marketing management",
+
+  "statistical": {
+    "management": "Statistical Management"
+  },
+
+  "line": {
+    "single": "Line account",
+    "management": "Line account management",
+    "channelName": "Channel Name",
+    "channelToken": "Channel Token",
+    "createdAt": "Created At",
+    "modifiedAt": "Modified At",
+    "enterChannelName": "Enter Channel Name",
+    "enterChannelToken": "Enter Channel Token",
+    "createSuccess": "Create Line account successfully",
+    "updateSuccess": "Update Line account successfully",
+    "titleDelete": "Confirm delete Line account",
+    "contentDelete":"Are you sure you want to delete the Line account <b>{{name}}</b>?",
+    "successDelete": "Delete Line account successfully",
+    "updateFail": "Update Line account fail",
+    "createFail": "Create Line account fail"
+  },
+
+  "twitter": {
+    "single":"Twitter account",
+    "management": "Twitter account management",
+    "name": "Name display",
+    "enterName": "Enter the name display",
+    "consumerKey": "Consumer Key",
+    "consumerSecret": "Consumer Secret",
+    "oauthToken": "Oauth Token",
+    "oauthTokenSecret": "Oauth Token Secret",
+    "enterConsumerKey": "Enter the consumer key",
+    "enterConsumerSecret": "Enter the consumer secret",
+    "enterOauthToken": "Enter the oauth token",
+    "enterOauthTokenSecret": "Enter the oauth token secret",
+    "createdAt": "Created At",
+    "modifiedAt":"Modified At",
+    "createSuccess": "Thêm mới tài khoản Twitter thành công",
+    "updateSuccess": "Cập nhật tài khoản Twitter thành công",
+    "titleDelete": "Xóa tài khoản Twitter",
+    "contentDelete": "Bạn chắc chắn muốn Twitter <b>{{name}}</b> không?",
+    "successDelete": "Xóa tài khoản Twitter thành công"
+  },
+
+  "send": {
+    "email": {
+      "management": "Marketing Email",
+      "push": "Gửi email cho khách hàng",
+      "root": "Chọn khách hàng để gửi email",
+      "available": "Khách hàng hiện tại",
+      "select": "Khách hàng đã chọn",
+      "account": "Chọn tài khoản email"
+    },
+    "sms": {
+      "management":"Marketing SMS",
+      "push": "Gửi sms cho khách hàng",
+      "root":"Chọn khách hàng để gửi sms",
+      "available": "Khách hàng hiện tại",
+      "select": "Khách hàng đã chọn"
+      
+    },
+    "reddit": {
+      "management":"Marketing Reddit",
+      "push": "Đăng bài lên nhóm Reddit",
+      "root":"Chọn nhóm Reddit",
+      "available": "Nhóm hiện tại",
+      "select": "Nhóm đã chọn",
+      "account":"Tài khoản reddit"
+    },
+    "line": {
+      "management": "BroadCast Line Chat",
+      "push": "Gửi tin nhắn quảng bá",
+      "select": "Chọn Bot của bạn",
+      "bot": "Line Bot"
+    },
+    "twitter": {
+      "management": "Marketing Twitter",
+      "push": "Đăng bài lên Twitter",
+      "select": "Chọn tài khoản Twitter của bạn",
+      "bot": "Tài khoản Twitter"
+    }
+  },
+
+  "email": {
+    "management": "Quản lý tài khoản Email",
+    "single":"Tài khoản Email",
+    "email": "Email",
+    "createdAt":"Ngày tạo",
+    "modifiedAt": "Ngày cập nhật",
+    "username": "Tài khoản email",
+    "password": "Mật khẩu email app",
+    "enterUsername": "Nhập tài khoản email của bạn",
+    "enterPassword":"Nhập mật khẩu email app của bạn",
+    "select": "Chọn email của bạn",
+    "createSuccess": "Thêm mới tài khoản Email thành công",
+    "updateSuccess": "Cập nhật tài khoản Email thành công",
+    "titleDelete": "Xóa tài khoản Email",
+    "contentDelete": "Bạn chắc chắn muốn xóa Email <b>{{name}}</b> không?",
+    "successDelete": "Xóa Email thành công",
+    "successUpdate": "Cập nhật Email thành công",
+    "successCreate": "Thêm Email thành công"
+  },
+
+  "reddit": {
+    "management": "Quản lý tài khoản Reddit",
+    "single": "Tài khoản reddit",
+    "displayName": "Tên hiển thị",
+    "username":"Tên đăng nhập",
+    "enterUsername": "Nhập tên đăng nhập của bạn",
+    "password":"Mật khẩu",
+    "clientSecret": " ClientSecret",
+    "clientId": "ClientId",
+    "enterPassword": "Nhập mật khẩu của bạn",
+    "enterClientId": "Nhập ClientId",
+    "enterClientSecret": "Nhập ClientSecret",
+    "enterDisplayName": "Nhập tên hiển thị",
+    "createdAt": "Ngày tạo",
+    "select": "Chọn tài khoản reddit của bạn",
+    "modifiedAt": "Ngày cập nhật",
+    "createSuccess": "Thêm mới tài khoản reddit thành công",
+    "updateSuccess": "Cập nhật tài khoản reddit thành công",
+    "titleDelete": "Xóa tài khoản Reddit",
+    "contentDelete": "Bạn chắc chắn muốn Reddit <b>{{name}}</b> không?",
+    "successDelete": "Xóa tài khoản Reddit thành công",
+    "group": {
+      "management": "Quản lý nhóm Reddit",
+      "createdAt": "Ngày tạo",
+      "modifiedAt": "Ngày cập nhật",
+      "name": "Tên nhóm",
+      "nameUrl": "Tên nhóm URL",
+      "enterName": "Nhập tên nhóm",
+      "enterNameUrl": "Nhập tên nhóm trên url",
+      "description":"Mô tả nhóm",
+      "enterDescription": "Nhập mô tả nhóm",
+      "list": "Danh sách nhóm Reddit",
+      "createSuccess": "Thêm mới nhóm reddit thành công",
+      "updateSuccess": "Cập nhật nhóm reddit thành công",
+      "titleDelete": "Xóa nhóm Reddit",
+      "contentDelete": "Bạn chắc chắn muốn xóa nhóm <b>{{name}}</b> không?",
+      "successDelete": "Xóa nhóm Reddit thành công",
+      "successUpdate": "Cập nhật nhóm Reddit thành công",
+      "successCreate": "Thêm nhóm Reddit thành công"
+    }
+  },
+
+  "post": {
+    "management": "Quản lý bài viết",
+    "title": "Tiêu đề bài viết",
+    "content": "Nội dung bài viết",
+    "titleEnter": "Nhập tiêu đề bài viết",
+    "contentEnter": "Nhập nội dung bài viết",
+    "notFound": "Không tìm thấy bài viết",
+    "createSuccess": "Tạo mới bài viết thành công",
+    "createFail": "Tạo mới bài viết thất bại",
+    "updateSuccess": "Cập nhật bài viết thành công",
+    "updateFail": "Cập nhật bài viết thất bại",
+    "titleDelete": "Xóa bài viết",
+    "contentDelete": "Bạn chắc chắn muốn xóa bài viết <b>{{name}}</b> không?",
+    "successDelete": "Xóa bài viết thành công",
+    "createdAt":"Ngày tạo",
+    "list": "Danh sách bài viết",
+    "detail": "Chi tiết bài viết",
+    "info": {
+      "root": "Thông tin bài viết",
+      "email": {
+        "root": "Khách hàng đã gửi email",
+        "name": "Tên khách hàng",
+        "email": "Email",
+        "address": "Địa chỉ",
+        "timeSend": "Thời gian gửi"
+      },
+      "sms": {
+        "root": "Khách hàng đã gửi sms",
+        "name": "Tên khách hàng",
+        "phone": "Số điện thoại",
+        "address": "Địa chỉ",
+        "timeSend": "Thời gian gửi"
+      },
+      "reddit": {
+        "root": "Nhóm reddit đã đăng",
+        "name": "Tên nhóm",
+        "nameUrl": "Tên nhóm URL",
+        "timeSend": "Thời gian gửi"
+      },
+      "social": {
+        "root": "Mạng xã hội khác",
+        "name": "Tên cá nhân hoặc tên bot",
+        "type": "Mạng xã hội",
+        "timeSend": "Thời gian gửi"
+      }
+    }
+  },
+
+  "clientInfo": {
+    "title": "Khách hàng",
+    "management": "Quản lý khách hàng",
+    "name": "Tên khách hàng",
+    "address": "Địa chỉ",
+    "phone": "Số điện thoại",
+    "email": "Email",
+    "createdAt": "Ngày tạo",
+    "modifiedAt": "Ngày cập nhật",
+    "list": "Danh sách khách hàng",
+    "create": "Thêm mới khách hàng",
+    "update": "Chỉnh sửa khách hàng",
+    "detail": "Chi tiết khách hàng",
+    "success": "Thành công",
+    "enterName": "Vui lòng điền tên của khách hàng",
+    "enterAddress": "Vui lòng điền địa chỉ của khách hàng",
+    "enterEmail": "Vui lòng điền email của khách hàng",
+    "enterPhone": "Vui lòng điền số điện thoại của khách hàng",
+    "updateSuccess": "Cập nhật thông tin khách hàng thành công",
+    "createSuccess": "Thêm mới thông tin khách hàng thành công",
+    "deleteSuccess": "Xóa thông tin khách hàng thành công",
+    "titleDelete": "Xóa khách hàng",
+    "contentDelete": "Bạn chắc chắn muốn xóa khách hàng <b>{{name}}</b> không?"
+  },
+
   "common": {
     "title": "MB AMC - Buildings Management System",
     "spinningTip": "Loading ...",

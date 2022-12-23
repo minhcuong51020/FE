@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="content">
+        <div class="row p-3">
+            <div class="col-6 text-center">
+                <h4>Số lượng bài viết</h4>
+                <div style="font-size: 20px; color: green; font-weight: bold;">{{totalPost}}</div>
+            </div>
+            <div class="col-6 text-center">
+                <h4>Số lượng khách hàng</h4>
+                <div style="font-size: 20px; color: green; font-weight: bold;">{{totalUser}}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content mt-4 p-3">
+        <div class="text-center mt-3">
+            <nz-date-picker style="min-width: 100px; max-width: 110px;" nzMode="year" [(ngModel)]="date" (ngModelChange)="onChange($event)"></nz-date-picker>
+        </div>
+        
+        <div class="row mt-3 mb-2">
+            <div class="col-1"></div>
+            <div class="col-10">
+                <canvas id="MyChart">
+                    {{chart}}
+                </canvas>
+                <div class="text-center mt-3">
+                    <h4>
+                        Thống kê lượt gửi bài viết theo năm
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -18,7 +18,9 @@ export class PostsService extends AbstractService {
 
   private host = SERVICE.POSTS + "/posts";
 
-  private hostSend = SERVICE.POSTS + "/send"
+  private hostSend = SERVICE.POSTS + "/send";
+
+  private hostStatistical = SERVICE.POSTS + "/statistical";
 
   constructor(
     protected http: HttpClient,
@@ -126,6 +128,31 @@ export class PostsService extends AbstractService {
     loading = true
   ): Observable<EntityResponseType<any>> {
     return super.post<any>(`${this.hostSend}/twitter`, postTwitter, {
+      loading
+    })
+  }
+
+  public statisticalPostByYear(
+    id: number,
+    loading = true
+  ): Observable<EntityResponseType<any>> {
+    return super.post<any>(`${this.hostStatistical}/post/${id}/send`, {
+      loading
+    })
+  }
+
+  public statisticalTotalPost(
+    loading = true
+  ): Observable<EntityResponseType<any>> {
+    return super.get<any>(`${this.hostStatistical}/post/total`, {
+      loading
+    })
+  }
+
+  public statisticalTotalUser(
+    loading = true
+  ): Observable<EntityResponseType<any>> {
+    return super.get<any>(`${this.hostStatistical}/user/total`, {
       loading
     })
   }

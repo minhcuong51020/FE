@@ -110,6 +110,8 @@ export class RedditUpdateComponent implements OnInit {
     const reddit: Reddit = {
       ...this.form.value,
     };
+    console.log(reddit);
+    
     this.redditService.createReddit(reddit, true).subscribe((res) => {
       if (res.status === STATUS.SUCCESS_200) {
         this.toast.success('reddit.createSuccess');

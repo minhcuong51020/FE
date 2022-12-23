@@ -52,4 +52,10 @@ export const SidebarConstant = [
     icon: 'user',
     root: true
   },
+  {
+    path: ROUTER_UTILS.statistical.root,
+    title: 'statistical.management',
+    icon: 'bar-chart',
+    root: true
+  },
 ];

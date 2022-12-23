@@ -105,8 +105,8 @@ export class EmailComponent implements OnInit {
   public delete(item: Email): void {
     const deleteForm = CommonUtil.modalConfirm(
       this.translateService,
-      'model.titleDelete',
-      'model.contentDelete',
+      'email.titleDelete',
+      'email.contentDelete',
       { name: item?.email }
     );
     const modal: NzModalRef = this.modalService.create(deleteForm);
@@ -115,7 +115,7 @@ export class EmailComponent implements OnInit {
         this.emailService.delete(item.id + "", true).subscribe((res) => {
                  this.pageIndex = PAGINATION.PAGE_DEFAULT;
                  this.loadData(this.pageIndex, this.pageSize);
-                 this.toast.success('model.successDelete');
+                 this.toast.success('email.successDelete');
                });
       }
     });

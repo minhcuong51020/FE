@@ -10,6 +10,10 @@
 
   "start-content": "Công cụ giúp bạn tối ưu hóa việc quản lý marketing",
 
+  "statistical": {
+    "management": "Quản lý thống kê"
+  },
+
   "line": {
     "single": "Tài khoản Line",
     "management": "Quản lý tài khoản Line",
@@ -23,7 +27,9 @@
     "updateSuccess": "Cập nhật bot Line thành công",
     "titleDelete": "Xác nhận xóa bot Line",
     "contentDelete":"Bạn chắc chắn muốn xóa bot Line <b>{{name}}</b> không?",
-    "deleteSuccess": "Xóa bot Line thành công"
+    "successDelete": "Xóa bot Line thành công",
+    "updateFail": "Cập nhật bot Line thất bại",
+    "createFail": "Tạo mới bot Line thất bại"
   },
 
   "twitter": {
@@ -40,7 +46,12 @@
     "enterOauthToken": "Nhập mã thông báo",
     "enterOauthTokenSecret": "Nhập mã thông báo bí mật",
     "createdAt": "Ngày tạo",
-    "modifiedAt":"Ngày cập nhật"
+    "modifiedAt":"Ngày cập nhật",
+    "createSuccess": "Thêm mới tài khoản Twitter thành công",
+    "updateSuccess": "Cập nhật tài khoản Twitter thành công",
+    "titleDelete": "Xóa tài khoản Twitter",
+    "contentDelete": "Bạn chắc chắn muốn Twitter <b>{{name}}</b> không?",
+    "successDelete": "Xóa tài khoản Twitter thành công"
   },
 
   "send": {
@@ -92,7 +103,14 @@
     "password": "Mật khẩu email app",
     "enterUsername": "Nhập tài khoản email của bạn",
     "enterPassword":"Nhập mật khẩu email app của bạn",
-    "select": "Chọn email của bạn"
+    "select": "Chọn email của bạn",
+    "createSuccess": "Thêm mới tài khoản Email thành công",
+    "updateSuccess": "Cập nhật tài khoản Email thành công",
+    "titleDelete": "Xóa tài khoản Email",
+    "contentDelete": "Bạn chắc chắn muốn xóa Email <b>{{name}}</b> không?",
+    "successDelete": "Xóa Email thành công",
+    "successUpdate": "Cập nhật Email thành công",
+    "successCreate": "Thêm Email thành công"
   },
 
   "reddit": {
@@ -113,6 +131,9 @@
     "modifiedAt": "Ngày cập nhật",
     "createSuccess": "Thêm mới tài khoản reddit thành công",
     "updateSuccess": "Cập nhật tài khoản reddit thành công",
+    "titleDelete": "Xóa tài khoản Reddit",
+    "contentDelete": "Bạn chắc chắn muốn Reddit <b>{{name}}</b> không?",
+    "successDelete": "Xóa tài khoản Reddit thành công",
     "group": {
       "management": "Quản lý nhóm Reddit",
       "createdAt": "Ngày tạo",
@@ -125,7 +146,12 @@
       "enterDescription": "Nhập mô tả nhóm",
       "list": "Danh sách nhóm Reddit",
       "createSuccess": "Thêm mới nhóm reddit thành công",
-      "updateSuccess": "Cập nhật nhóm reddit thành công"
+      "updateSuccess": "Cập nhật nhóm reddit thành công",
+      "titleDelete": "Xóa nhóm Reddit",
+      "contentDelete": "Bạn chắc chắn muốn xóa nhóm <b>{{name}}</b> không?",
+      "successDelete": "Xóa nhóm Reddit thành công",
+      "successUpdate": "Cập nhật nhóm Reddit thành công",
+      "successCreate": "Thêm nhóm Reddit thành công"
     }
   },
 
@@ -140,6 +166,9 @@
     "createFail": "Tạo mới bài viết thất bại",
     "updateSuccess": "Cập nhật bài viết thành công",
     "updateFail": "Cập nhật bài viết thất bại",
+    "titleDelete": "Xóa bài viết",
+    "contentDelete": "Bạn chắc chắn muốn xóa bài viết <b>{{name}}</b> không?",
+    "successDelete": "Xóa bài viết thành công",
     "createdAt":"Ngày tạo",
     "list": "Danh sách bài viết",
     "detail": "Chi tiết bài viết",
@@ -194,8 +223,9 @@
     "enterPhone": "Vui lòng điền số điện thoại của khách hàng",
     "updateSuccess": "Cập nhật thông tin khách hàng thành công",
     "createSuccess": "Thêm mới thông tin khách hàng thành công",
+    "deleteSuccess": "Xóa thông tin khách hàng thành công",
     "titleDelete": "Xóa khách hàng",
-    "contentDelete": "Bạn chắc chắn muốn xóa khách hàng {{name}} không?"
+    "contentDelete": "Bạn chắc chắn muốn xóa khách hàng <b>{{name}}</b> không?"
   },
 
   "common": {
@@ -604,6 +634,23 @@
       "guest-register": "Sổ quản lý khách ra vào công ty"
     },
     "register": {
+      "msg": "Đăng ký",
+      "fullName":"Họ và Tên",
+      "username": "Tên đăng nhập",
+      "password":"Mật khẩu",
+      "rePassword": "Nhập lại mật khẩu",
+      "placeholder": {
+        "fullName": "Nhập họ tên",
+        "username": "Nhập tên đăng nhập",
+        "password":"Nhập mật khẩu",
+        "rePassword":"Nhập lại mật khẩu"
+      },
+      "error": {
+        "fullName": "Họ tên không được để trông",
+        "username": "Tên đăng nhập không được để trông",
+        "password":"Mật khẩu không được để trông",
+        "rePassword":"Mật khẩu không được để trông"
+      },
       "date": "Ngày Vào",
       "employeeId": "Nhân viên",
       "content": "Nội dung",

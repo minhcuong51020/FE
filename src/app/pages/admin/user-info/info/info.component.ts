@@ -104,8 +104,8 @@ export class InfoComponent implements OnInit {
   public delete(clientInfo: ClientInfo): void {
     const deleteForm = CommonUtil.modalConfirm(
       this.translateService,
-      'model.titleDelete',
-      'model.contentDelete',
+      'clientInfo.titleDelete',
+      'clientInfo.contentDelete',
       { name: clientInfo?.name }
     );
     const modal: NzModalRef = this.modalService.create(deleteForm);
@@ -114,7 +114,7 @@ export class InfoComponent implements OnInit {
         this.clientInfoService.delete(clientInfo.id, true).subscribe((res) => {
                  this.pageIndex = PAGINATION.PAGE_DEFAULT;
                  this.loadData(this.pageIndex, this.pageSize);
-                 this.toast.success('model.successDelete');
+                 this.toast.success('clientInfo.successDelete');
                });
       }
     });

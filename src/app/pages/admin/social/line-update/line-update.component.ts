@@ -74,12 +74,15 @@ export class LineUpdateComponent implements OnInit {
     if (this.line?.id) {
       this.lineService.update(line, this.line.id, true).subscribe((res) => {
         if (res.status === STATUS.SUCCESS_200) {
-          this.toast.success('email.updateSuccess');
+          this.toast.success('line.updateSuccess');
           this.modalRef.close({
             success: true,
             value: line,
           });
         }
+      },
+      (error) => {
+        this.toast.success('line.updateFail');
       });
     }
   }
@@ -94,7 +97,7 @@ export class LineUpdateComponent implements OnInit {
     };
     this.lineService.create(line, true).subscribe((res) => {
       if (res.status === STATUS.SUCCESS_200) {
-        this.toast.success('email.createSuccess');
+        this.toast.success('line.createSuccess');
         this.modalRef.close({
           success: true,
           value: line,
@@ -102,7 +105,7 @@ export class LineUpdateComponent implements OnInit {
       }
     },
     (erorr) => {
-      this.toast.error('Cập nhật thất bại');
+      this.toast.error('line.createFail');
     });
   }
 

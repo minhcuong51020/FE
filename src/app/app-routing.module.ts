@@ -50,6 +50,12 @@ const routes: Routes = [
         )
       },
       {
+        path:ROUTER_UTILS.statistical.root,
+        loadChildren : () => import('@pages/admin/statistical/statistical.module').then(
+          (m) => m.StatisticalModule
+        )
+      },
+      {
         path:ROUTER_UTILS.send.root,
         loadChildren : () => import('@pages/admin/send/send.module').then(
           (m) => m.SendModule

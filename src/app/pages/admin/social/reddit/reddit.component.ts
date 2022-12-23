@@ -105,8 +105,8 @@ export class RedditComponent implements OnInit {
   public delete(item: Reddit): void {
     const deleteForm = CommonUtil.modalConfirm(
       this.translateService,
-      'model.titleDelete',
-      'model.contentDelete',
+      'reddit.titleDelete',
+      'reddit.contentDelete',
       { name: item?.nameDisplay }
     );
     const modal: NzModalRef = this.modalService.create(deleteForm);
@@ -115,7 +115,7 @@ export class RedditComponent implements OnInit {
         this.redditService.deleteReddit(item.id + "", true).subscribe((res) => {
                  this.pageIndex = PAGINATION.PAGE_DEFAULT;
                  this.loadData(this.pageIndex, this.pageSize);
-                 this.toast.success('model.successDelete');
+                 this.toast.success('reddit.successDelete');
                });
       }
     });

@@ -92,7 +92,7 @@ export class TwitterUpdateComponent implements OnInit {
     if (this.twitter?.id) {
       this.twitterService.update(twitter, this.twitter.id, true).subscribe((res) => {
         if (res.status === STATUS.SUCCESS_200) {
-          this.toast.success('reddit.updateSuccess');
+          this.toast.success('twitter.updateSuccess');
           this.modalRef.close({
             success: true,
             value: twitter,
@@ -114,7 +114,7 @@ export class TwitterUpdateComponent implements OnInit {
     
     this.twitterService.create(twitter, true).subscribe((res) => {
       if (res.status === STATUS.SUCCESS_200) {
-        this.toast.success('reddit.createSuccess');
+        this.toast.success('twitter.createSuccess');
         this.modalRef.close({
           success: true,
           value: twitter,
@@ -122,7 +122,7 @@ export class TwitterUpdateComponent implements OnInit {
       }
     },
     (erorr) => {
-      this.toast.error('reddit.createFail');
+      this.toast.error('twitter.createFail');
     });
   }
 

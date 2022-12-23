@@ -103,9 +103,9 @@ export class PostUpdateComponent implements OnInit {
       (res) => {
         if(res.status === 200) {
           this.router.navigate([`${ROUTER_UTILS.posts.root}/${ROUTER_UTILS.posts.list}`]);
-          this.toast.success('posts.createSuccess');
+          this.toast.success('post.createSuccess');
         } else {
-          this.toast.error('posts.createFail');
+          this.toast.error('post.createFail');
         }
       }
     )
@@ -116,9 +116,9 @@ export class PostUpdateComponent implements OnInit {
       (res) => {
         if(res.status === 200) {
           this.router.navigate([`${ROUTER_UTILS.posts.root}/${ROUTER_UTILS.posts.list}`]);
-          this.toast.success('posts.updateSuccess');
+          this.toast.success('post.updateSuccess');
         } else {
-          this.toast.error('posts.updateFail');
+          this.toast.error('post.updateFail');
         }
       }
     )

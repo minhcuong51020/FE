@@ -22,8 +22,11 @@ export const ROUTER_UTILS = {
     emailCreate: 'create',
     emailUpdate: ':emailId/update',
     emailDetail: ':emailId/detail'
-  }
-  ,
+  },
+  statistical: {
+    root: 'statistical',
+    list: ''
+  },
   social: {
     root: 'social',
     reddit: 'reddit',
@@ -99,10 +102,6 @@ export const ROUTER_UTILS = {
     create: 'create',
     update: ':customerId/update',
     detail: ':id/detail',
-  },
-  statistical:{
-    root:'',
-    statistical:"statistical"
   },
   notification: {
     root: 'notification',
